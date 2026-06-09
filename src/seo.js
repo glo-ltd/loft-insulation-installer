@@ -133,32 +133,45 @@ function upsertLink(rel, href) {
   el.setAttribute("href", href);
 }
 
-export function applyPageMeta(page) {
+// Structured per-page tag data — the single source consumed by both the runtime
+// head-manager (applyPageMeta) and the build-time prerender script.
+export function getMetaTags(page) {
   const m = PAGE_META[page] || PAGE_META.home;
   const url = SITE_URL + m.path;
   const ogTitle = m.ogTitle || m.title;
   const ogDesc = m.ogDescription || m.description;
   const image = SITE_URL + (m.ogImage || DEFAULT_OG_IMAGE);
+  return {
+    title: m.title,
+    canonical: url,
+    names: {
+      description: m.description,
+      robots: m.robots || "index, follow",
+      "twitter:card": "summary_large_image",
+      "twitter:title": ogTitle,
+      "twitter:description": ogDesc,
+      "twitter:image": image,
+    },
+    properties: {
+      "og:type": "website",
+      "og:site_name": SITE_NAME,
+      "og:locale": "en_GB",
+      "og:url": url,
+      "og:title": ogTitle,
+      "og:description": ogDesc,
+      "og:image": image,
+      "og:image:width": "1200",
+      "og:image:height": "630",
+    },
+  };
+}
 
-  document.title = m.title;
-  upsertMeta("description", m.description);
-  upsertMeta("robots", m.robots || "index, follow");
-  upsertLink("canonical", url);
-
-  upsertMeta("og:type", "website", true);
-  upsertMeta("og:site_name", SITE_NAME, true);
-  upsertMeta("og:locale", "en_GB", true);
-  upsertMeta("og:url", url, true);
-  upsertMeta("og:title", ogTitle, true);
-  upsertMeta("og:description", ogDesc, true);
-  upsertMeta("og:image", image, true);
-  upsertMeta("og:image:width", "1200", true);
-  upsertMeta("og:image:height", "630", true);
-
-  upsertMeta("twitter:card", "summary_large_image");
-  upsertMeta("twitter:title", ogTitle);
-  upsertMeta("twitter:description", ogDesc);
-  upsertMeta("twitter:image", image);
+export function applyPageMeta(page) {
+  const t = getMetaTags(page);
+  document.title = t.title;
+  upsertLink("canonical", t.canonical);
+  for (const [k, v] of Object.entries(t.names)) upsertMeta(k, v, false);
+  for (const [k, v] of Object.entries(t.properties)) upsertMeta(k, v, true);
 }
 
 // ---- Path <-> page routing helpers (consumed by the router in app.jsx) ----

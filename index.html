@@ -40,8 +40,10 @@
   })(window,document,'script','dataLayer','GTM-NNQSV8P');</script>
   <!-- End Google Tag Manager -->
 
-  <!-- Static homepage baseline. React updates these per route at runtime
-       (see src/seo.js); this block is what social scrapers and first paint see. -->
+  <!-- seo:start -->
+  <!-- Static homepage baseline. The build step (scripts/prerender-meta.mjs)
+       replaces everything between the seo:start/seo:end markers per page, and
+       React keeps it in sync at runtime (see src/seo.js). -->
   <title>Loft Insulation Installers | Free Survey &amp; Quote, UK-Wide</title>
   <meta name="description" content="Eco-friendly loft insulation fitted by accredited local installers. Get a free, no-obligation survey and see how much you could save on your bills." />
   <link rel="canonical" href="https://loftinsulationinstaller.co.uk/" />
@@ -61,6 +63,7 @@
   <meta name="twitter:title" content="Eco-Friendly Loft Insulation, Fitted by Local Experts" />
   <meta name="twitter:description" content="We match you with vetted, accredited local installers for a warmer home, lower bills and a lighter footprint. Free, no-obligation survey and quote." />
   <meta name="twitter:image" content="https://loftinsulationinstaller.co.uk/images/og/default.jpg" />
+  <!-- seo:end -->
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
