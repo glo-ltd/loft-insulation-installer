@@ -9,6 +9,7 @@ import { ServicePage } from './service.jsx';
 import { HubPage } from './hub.jsx';
 import { LegalPage, LEGAL_PAGES as LEGAL_PAGES_LIST } from './legal.jsx';
 import { CookieBanner } from './CookieBanner.jsx';
+import { applyPageMeta } from './seo.js';
 import { MATERIALS, HUBS } from './materials-data.jsx';
 
 const SERVICE_PAGES = Object.keys(MATERIALS);
@@ -42,6 +43,9 @@ function App() {
       history.replaceState(null, "", "#" + page);
     }
   }, [page]);
+
+  // Update <head> meta/OG/canonical/robots for the current page.
+  React.useEffect(() => { applyPageMeta(page); }, [page]);
 
   React.useEffect(() => {
     const onHash = () => setPage(pageFromHash());
