@@ -160,3 +160,29 @@ export function applyPageMeta(page) {
   upsertMeta("twitter:description", ogDesc);
   upsertMeta("twitter:image", image);
 }
+
+// ---- Path <-> page routing helpers (consumed by the router in app.jsx) ----
+
+// Normalise a URL path: strip query/hash, ensure a leading slash, and drop any
+// trailing slash (except root) so "/foo" and "/foo/" compare equal.
+export function normalizePath(p) {
+  let path = (p || "/").split("#")[0].split("?")[0];
+  if (!path.startsWith("/")) path = "/" + path;
+  if (path.length > 1) path = path.replace(/\/+$/, "");
+  return path || "/";
+}
+
+const PATH_TO_PAGE = {};
+Object.entries(PAGE_META).forEach(([page, m]) => {
+  PATH_TO_PAGE[normalizePath(m.path)] = page;
+});
+
+// Canonical path for a page id (with trailing slash, matching the canonical tag).
+export function pageToPath(page) {
+  return (PAGE_META[page] && PAGE_META[page].path) || "/";
+}
+
+// Resolve a URL path to a page id (defaults to home for unknown paths).
+export function pageFromPath(pathname) {
+  return PATH_TO_PAGE[normalizePath(pathname)] || "home";
+}

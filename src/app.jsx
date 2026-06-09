@@ -9,7 +9,7 @@ import { ServicePage } from './service.jsx';
 import { HubPage } from './hub.jsx';
 import { LegalPage, LEGAL_PAGES as LEGAL_PAGES_LIST } from './legal.jsx';
 import { CookieBanner } from './CookieBanner.jsx';
-import { applyPageMeta } from './seo.js';
+import { applyPageMeta, pageToPath, pageFromPath, normalizePath } from './seo.js';
 import { MATERIALS, HUBS } from './materials-data.jsx';
 
 const SERVICE_PAGES = Object.keys(MATERIALS);
@@ -27,30 +27,25 @@ const SERVICE_TO_ANCHOR = {
 };
 
 function App() {
-  const ALL_PAGES = ["home", "thank-you", ...SERVICE_PAGES, ...HUB_PAGES, ...LEGAL_PAGES];
-  const pageFromHash = () => {
-    const h = (window.location.hash || "").replace(/^#\/?/, "");
-    return ALL_PAGES.includes(h) ? h : "home";
-  };
-  const [page, setPage] = React.useState(pageFromHash);
+  const [page, setPage] = React.useState(() => pageFromPath(window.location.pathname));
 
-  // Keep the URL hash in sync so every page is directly linkable and
-  // survives a refresh (e.g. open …#thank-you to review the thank-you page).
+  // Keep the URL path in sync with the current page so every page is directly
+  // linkable and survives a refresh (Netlify serves index.html for any path).
+  // Pushes a new history entry only when the path actually changes — so this
+  // also runs harmlessly after a popstate (URL already matches → no push).
   React.useEffect(() => {
-    if (page === "home") {
-      history.replaceState(null, "", window.location.pathname + window.location.search);
-    } else if ((window.location.hash || "").replace(/^#\/?/, "") !== page) {
-      history.replaceState(null, "", "#" + page);
+    const desired = pageToPath(page);
+    if (normalizePath(window.location.pathname) !== normalizePath(desired)) {
+      history.pushState(null, "", desired);
     }
+    applyPageMeta(page);
   }, [page]);
 
-  // Update <head> meta/OG/canonical/robots for the current page.
-  React.useEffect(() => { applyPageMeta(page); }, [page]);
-
+  // Back/forward navigation.
   React.useEffect(() => {
-    const onHash = () => setPage(pageFromHash());
-    window.addEventListener("hashchange", onHash);
-    return () => window.removeEventListener("hashchange", onHash);
+    const onPop = () => setPage(pageFromPath(window.location.pathname));
+    window.addEventListener("popstate", onPop);
+    return () => window.removeEventListener("popstate", onPop);
   }, []);
 
   const scrollToId = (id) => {
