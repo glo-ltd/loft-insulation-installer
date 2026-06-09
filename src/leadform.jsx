@@ -128,19 +128,26 @@ function LeadForm({ onNav, compact = false, title, sub, presetType = "" }) {
     setSubmitting(true);
     const webhookUrl = import.meta.env.VITE_ZAPIER_WEBHOOK_URL;
     if (webhookUrl) {
+      // Send as x-www-form-urlencoded so the browser treats this as a "simple"
+      // cross-origin request (no CORS preflight). The POST then reaches Zapier
+      // even though we can't read its cross-origin response, and Zapier's Catch
+      // Hook maps these into individual fields just like JSON.
+      const body = new URLSearchParams({
+        firstName, lastName, phone, postcode, email,
+        serviceInterest: type,
+        message,
+        estimatedMonthlyBill: ctx?.bill ?? "",
+        estimatedYearlySaving: ctx?.yearly ?? "",
+      });
       try {
         await fetch(webhookUrl, {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            firstName, lastName, phone, postcode, email,
-            serviceInterest: type,
-            message,
-            estimatedMonthlyBill: ctx?.bill,
-            estimatedYearlySaving: ctx?.yearly,
-          }),
+          headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
+          body,
         });
       } catch (_) {}
+    } else if (import.meta.env.DEV) {
+      console.warn("VITE_ZAPIER_WEBHOOK_URL is not set — the form did not send data to Zapier.");
     }
     // Fire a GA4 conversion via GTM's dataLayer. No personal data is sent
     // (no name/email/phone) — only non-PII context, per GA4 policy.
