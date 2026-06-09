@@ -12,11 +12,17 @@
 
 export const SITE_URL = "https://loftinsulationinstaller.co.uk"; // ← swap if the live domain differs
 export const SITE_NAME = "Loft Insulation Installer";
-const DEFAULT_OG_IMAGE = "/images/og/default.jpg"; // 1200×630 branded fallback; add per-page images at launch
+// Branded 1200×630 share images live in public/og/ (one per page; generator in
+// project/og/og-images.html). Indexable pages set their own ogImage below; the
+// rest (thank-you, legal) fall back to the homepage card.
+const DEFAULT_OG_IMAGE = "/og/home.png";
+const DEFAULT_OG_ALT = "Eco-friendly loft insulation, installed by accredited local experts.";
 
 export const PAGE_META = {
   "home": {
     path: "/", robots: "index, follow",
+    ogImage: "/og/home.png",
+    ogImageAlt: "Eco-friendly loft insulation, installed by accredited local experts.",
     title: "Loft Insulation Installers | Free Survey & Quote, UK-Wide",
     description: "Eco-friendly loft insulation fitted by accredited local installers. Get a free, no-obligation survey and see how much you could save on your bills.",
     ogTitle: "Eco-Friendly Loft Insulation, Fitted by Local Experts",
@@ -24,6 +30,8 @@ export const PAGE_META = {
   },
   "loft-insulation": {
     path: "/loft-insulation/", robots: "index, follow",
+    ogImage: "/og/loft-insulation.png",
+    ogImageAlt: "Eco-friendly loft insulation in four sustainable materials, fitted by accredited installers.",
     title: "Loft Insulation Installers | Sustainable Materials",
     description: "Compare eco-friendly loft insulation - sheep wool, foil, recycled plastic & hemp - fitted by accredited local installers. Book your free survey.",
     ogTitle: "Sustainable Loft Insulation for Every Home",
@@ -31,6 +39,8 @@ export const PAGE_META = {
   },
   "sheep-wool": {
     path: "/loft-insulation/sheep-wool/", robots: "index, follow",
+    ogImage: "/og/sheep-wool.png",
+    ogImageAlt: "Sheep wool loft insulation, installed by accredited local experts.",
     title: "Sheep Wool Loft Insulation Installers | Free Survey",
     description: "Natural, breathable Thermafleece sheep wool loft insulation, ideal for period homes. Fitted by accredited installers. Get a free, no-obligation quote.",
     ogTitle: "Sheep Wool Loft Insulation - Natural & Breathable",
@@ -38,6 +48,8 @@ export const PAGE_META = {
   },
   "foil": {
     path: "/loft-insulation/foil/", robots: "index, follow",
+    ogImage: "/og/foil.png",
+    ogImageAlt: "Foil loft insulation, installed by accredited local experts.",
     title: "Foil Loft Insulation Installers | SuperFOIL Multifoil",
     description: "Slim, reflective SuperFOIL multifoil loft insulation fitted by accredited specialists, ideal for 1920-1965 homes. Get a free, no-obligation quote.",
     ogTitle: "SuperFOIL Loft Insulation - Slim & Reflective",
@@ -45,6 +57,8 @@ export const PAGE_META = {
   },
   "recycled-plastic": {
     path: "/loft-insulation/recycled-plastic/", robots: "index, follow",
+    ogImage: "/og/recycled-plastic.png",
+    ogImageAlt: "Recycled plastic loft insulation, installed by accredited local experts.",
     title: "Recycled Plastic Loft Insulation | SupaSoft Installers",
     description: "Soft, safe SupaSoft recycled plastic loft insulation made from recycled bottles, fitted by accredited installers. Book a free, no-obligation survey.",
     ogTitle: "SupaSoft Recycled Plastic Loft Insulation",
@@ -52,6 +66,8 @@ export const PAGE_META = {
   },
   "hemp": {
     path: "/loft-insulation/hemp/", robots: "index, follow",
+    ogImage: "/og/hemp.png",
+    ogImageAlt: "Hemp loft insulation, installed by accredited local experts.",
     title: "Hemp Loft Insulation Installers | Natural & Vegan",
     description: "Breathable, vegan hemp loft insulation, ideal for period homes and eco-conscious owners. Fitted by accredited installers. Get a free quote.",
     ogTitle: "Hemp Loft Insulation - Natural, Vegan, Breathable",
@@ -59,6 +75,8 @@ export const PAGE_META = {
   },
   "loft-storage": {
     path: "/loft-storage/", robots: "index, follow",
+    ogImage: "/og/loft-storage.png",
+    ogImageAlt: "Loft storage solutions, fitted by accredited local experts.",
     title: "Loft Storage Solutions | Boarding, Ladders & Hatches",
     description: "Reclaim your loft with boarding, ladders, hatches and storage rooms, fitted to building-regs standard over your insulation. Get a free quote.",
     ogTitle: "Loft Storage Solutions That Protect Your Insulation",
@@ -66,6 +84,8 @@ export const PAGE_META = {
   },
   "loft-boarding": {
     path: "/loft-storage/loft-boarding/", robots: "index, follow",
+    ogImage: "/og/loft-boarding.png",
+    ogImageAlt: "Loft boarding, fitted by accredited local experts.",
     title: "Loft Boarding Installers | Raised Over Insulation",
     description: "Professional loft boarding raised over your insulation for safe, usable storage that keeps performing. Accredited installers. Get a free quote.",
     ogTitle: "Loft Boarding - Safe Storage, Raised Over Insulation",
@@ -73,6 +93,8 @@ export const PAGE_META = {
   },
   "loft-ladders": {
     path: "/loft-storage/loft-ladders/", robots: "index, follow",
+    ogImage: "/og/loft-ladders.png",
+    ogImageAlt: "Loft ladders, fitted by accredited local experts.",
     title: "Loft Ladder Installers | Aluminium, Timber & Telescopic",
     description: "Safe, sturdy loft ladders supplied and fitted by certified specialists: aluminium, timber, telescopic or electric. Get a free, no-obligation quote.",
     ogTitle: "Loft Ladders Supplied & Fitted by Specialists",
@@ -80,6 +102,8 @@ export const PAGE_META = {
   },
   "loft-hatch": {
     path: "/loft-storage/loft-hatch/", robots: "index, follow",
+    ogImage: "/og/loft-hatch.png",
+    ogImageAlt: "Insulated loft hatch, fitted by accredited local experts.",
     title: "Insulated Loft Hatch Installation | Draught-Sealed",
     description: "Energy-efficient, draught-sealed insulated loft hatches fitted by certified specialists to cut heat loss. Get a free, no-obligation quote.",
     ogTitle: "Insulated, Draught-Sealed Loft Hatches",
@@ -87,6 +111,8 @@ export const PAGE_META = {
   },
   "loft-storage-rooms": {
     path: "/loft-storage/loft-storage-rooms/", robots: "index, follow",
+    ogImage: "/og/loft-storage-rooms.png",
+    ogImageAlt: "Loft storage room, fitted by accredited local experts.",
     title: "Loft Storage Rooms | Insulated & Boarded Conversions",
     description: "Transform your loft into a clean, insulated and fully-boarded storage room, lit and ready to use. Fitted by accredited installers. Get a free quote.",
     ogTitle: "Loft Storage Rooms - Insulated, Boarded & Ready",
@@ -141,6 +167,7 @@ export function getMetaTags(page) {
   const ogTitle = m.ogTitle || m.title;
   const ogDesc = m.ogDescription || m.description;
   const image = SITE_URL + (m.ogImage || DEFAULT_OG_IMAGE);
+  const imageAlt = m.ogImageAlt || DEFAULT_OG_ALT;
   return {
     title: m.title,
     canonical: url,
@@ -151,6 +178,7 @@ export function getMetaTags(page) {
       "twitter:title": ogTitle,
       "twitter:description": ogDesc,
       "twitter:image": image,
+      "twitter:image:alt": imageAlt,
     },
     properties: {
       "og:type": "website",
@@ -162,6 +190,7 @@ export function getMetaTags(page) {
       "og:image": image,
       "og:image:width": "1200",
       "og:image:height": "630",
+      "og:image:alt": imageAlt,
     },
   };
 }

@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OpenGraph images — Loft Insulation Installer</title>
+<link rel="stylesheet" href="../_ds/loft-insulation-installer-design-system-1e8c5da2-ae57-4d7b-8ffe-135c17c47972/tokens/fonts.css">
+<link rel="stylesheet" href="../_ds/loft-insulation-installer-design-system-1e8c5da2-ae57-4d7b-8ffe-135c17c47972/tokens/colors.css">
+<link rel="stylesheet" href="../_ds/loft-insulation-installer-design-system-1e8c5da2-ae57-4d7b-8ffe-135c17c47972/tokens/typography.css">
+<link rel="stylesheet" href="../_ds/loft-insulation-installer-design-system-1e8c5da2-ae57-4d7b-8ffe-135c17c47972/tokens/spacing.css">
+<link rel="stylesheet" href="../_ds/loft-insulation-installer-design-system-1e8c5da2-ae57-4d7b-8ffe-135c17c47972/tokens/base.css">
+<style>
+  html, body { margin: 0; background: #1b1b1b; }
+  /* Each OG card is exactly 1200x630 (1.91:1 — the OpenGraph standard). */
+  .stage { display: flex; flex-direction: column; align-items: flex-start; gap: 28px; padding: 28px; }
+  .og {
+    width: 1200px; height: 630px;
+    position: relative; display: flex; overflow: hidden;
+    background-color: var(--lii-dark-slate);
+    --wave-color: var(--lii-dark-slate);
+    font-family: var(--font-body);
+    flex: none;
+  }
+  /* heat-wave glow (signature device) */
+  .og::before {
+    content: ""; position: absolute; inset: -12% -6% auto -6%; height: 150%;
+    background:
+      radial-gradient(120% 90% at 12% -18%, rgba(255,255,255,0.10), transparent 58%),
+      radial-gradient(90% 70% at 30% 8%, rgba(11,76,91,0.55), transparent 60%),
+      linear-gradient(115deg, rgba(255,255,255,0) 35%, rgba(255,255,255,0.05) 75%);
+    transform: rotate(-4deg); z-index: 0; pointer-events: none;
+  }
+
+  .og__photo { position: absolute; right: 0; top: 0; width: 605px; height: 100%; z-index: 1; }
+  .og__photo img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(1.05) saturate(1.04); }
+  .og__photo::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(90deg,
+      var(--lii-dark-slate) 0%,
+      rgba(12,40,46,0.86) 12%,
+      rgba(12,40,46,0.28) 38%,
+      rgba(12,40,46,0) 58%);
+  }
+
+  .og__body {
+    position: relative; z-index: 2;
+    width: 700px; box-sizing: border-box;
+    padding: 64px 40px 56px 72px;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+
+  /* ---- logo ---- */
+  .og__logo { display: flex; align-items: center; gap: 16px; }
+  .og__logo svg { width: 56px; height: 56px; display: block; }
+  .og__wordmark {
+    font-family: var(--font-heading); font-weight: 700;
+    text-transform: lowercase; color: #fff;
+    font-size: 21px; line-height: 1.02; letter-spacing: 0.01em;
+  }
+
+  /* ---- middle: eyebrow + headline + points ---- */
+  .og__mid { margin: 8px 0; }
+  .og__eyebrow {
+    font-family: var(--font-ui); font-weight: 700;
+    font-size: 16px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--lii-grass-green); margin: 0 0 20px;
+  }
+  .og__title {
+    font-family: var(--font-heading); font-weight: 700;
+    color: #fff; letter-spacing: -0.015em; line-height: 1.04;
+    font-size: 62px; margin: 0; text-wrap: balance;
+  }
+  .og__title .mk {
+    background: var(--lii-grass-green); color: var(--lii-dark-slate);
+    box-decoration-break: clone; -webkit-box-decoration-break: clone;
+    padding: 0.02em 0.14em; border-radius: 2px 7px 3px 8px;
+  }
+
+  .og__points { list-style: none; margin: 30px 0 0; padding: 0; display: flex; flex-direction: column; gap: 13px; }
+  .og__points li { display: flex; align-items: center; gap: 13px; color: #EAF0F0; font-size: 21px; font-weight: 500; }
+  .og__points .tick {
+    flex: none; width: 28px; height: 28px; border-radius: 999px;
+    background: rgba(198,226,153,0.16); display: flex; align-items: center; justify-content: center;
+  }
+  .og__points .tick svg { width: 17px; height: 17px; stroke: var(--lii-grass-green); }
+
+  /* ---- footer ---- */
+  .og__foot { display: flex; align-items: center; justify-content: space-between; }
+  .og__url { color: #9DB0B3; font-family: var(--font-ui); font-weight: 600; font-size: 18px; letter-spacing: 0.01em; }
+  .og__rating { display: flex; align-items: center; gap: 10px; }
+  .og__stars { display: flex; gap: 3px; }
+  .og__stars svg { width: 18px; height: 18px; fill: var(--lii-warm-orange); }
+  .og__rating span { color: #C6D2D4; font-size: 16px; font-weight: 600; font-family: var(--font-ui); white-space: nowrap; }
+
+  .label { color: #888; font: 600 13px var(--font-ui, sans-serif); margin-bottom: -16px; }
+</style>
+</head>
+<body>
+  <div class="stage" id="stage"></div>
+
+<script>
+const LOGO = `
+<svg viewBox="0 0 64 71" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <path d="M 40.074 3.07 C 35.628 -1.001 28.817 -1.026 24.34 3.011 L 3.864 21.477 C 1.404 23.696 0 26.853 0 30.165 L 0 58.874 C 0 65.335 5.238 70.573 11.698 70.573 L 52.302 70.573 C 58.762 70.573 64 65.335 64 58.874 L 64 30.125 C 64 26.843 62.622 23.712 60.201 21.496 Z M 28.027 7.099 C 30.397 4.962 34.003 4.975 36.357 7.13 L 56.484 25.557 C 57.765 26.73 58.495 28.387 58.495 30.125 L 58.495 58.874 C 58.495 62.295 55.722 65.068 52.302 65.068 L 11.698 65.068 C 8.278 65.068 5.505 62.295 5.505 58.874 L 5.505 30.165 C 5.505 28.411 6.248 26.74 7.551 25.566 Z" fill="#fff" fill-rule="evenodd"/>
+  <g transform="translate(10.854 12.274)"><path d="M 24.53 1.262 L 40.724 16.067 C 41.722 16.979 42.291 18.269 42.291 19.622 L 42.291 22.635 C 39.01 25.615 29.984 29.51 23.779 26.718 C 21.03 25.48 18.94 23.872 16.999 22.378 C 12.579 18.976 8.925 16.164 0 19.656 L 0 19.643 C 0 18.278 0.579 16.977 1.593 16.064 L 18.057 1.238 C 19.899 -0.422 22.7 -0.411 24.53 1.262 Z M 0 35.652 L 0 42.741 C 0 45.401 2.157 47.558 4.817 47.558 L 37.474 47.558 C 40.134 47.558 42.291 45.401 42.291 42.741 L 42.291 35.879 C 32.878 41.002 27.583 36.337 23.942 33.13 C 23.478 32.721 23.042 32.337 22.627 31.999 C 13.119 24.256 2.671 30.279 0 35.652 Z" fill="#F66904" fill-rule="evenodd"/></g>
+</svg>`;
+const TICK = `<svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`;
+const STAR = `<svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 5.9 20.5l1.4-6.8L2.2 9l6.9-.7z"/></svg>`;
+
+// title: array of segments; {t:"text"} plain white, {t:"text", mk:true} grass marker
+const CARDS = [
+  { slug: "home", img: "../assets/team.jpg", pos: "center 35%",
+    eyebrow: "Eco-friendly loft insulation · UK-wide",
+    title: [{t:"Warmer homes, "},{t:"lower bills.", mk:true}],
+    points: ["Free, no-obligation survey", "Accredited local installers", "Rated excellent by homeowners"] },
+
+  { slug: "loft-insulation", img: "../assets/imagery-1.jpg", pos: "center",
+    eyebrow: "Loft insulation · Sustainable",
+    title: [{t:"Eco-friendly ", mk:true},{t:"loft insulation."}],
+    points: ["Four sustainable materials", "Free home survey", "Accredited installers"] },
+
+  { slug: "sheep-wool", img: "../assets/sheep-wool.jpg", pos: "center",
+    eyebrow: "Loft insulation · Period homes",
+    title: [{t:"Sheep wool", mk:true},{t:" loft insulation."}],
+    points: ["Natural British wool", "Breathable & moisture-regulating", "Best for period homes"] },
+
+  { slug: "foil", img: "../assets/foil.jpg", pos: "center",
+    eyebrow: "Loft insulation · 1920–1965 homes",
+    title: [{t:"Foil", mk:true},{t:" loft insulation."}],
+    points: ["Reflects radiant heat", "Slim, space-saving profile", "Best for 1920–1965 homes"] },
+
+  { slug: "recycled-plastic", img: "../assets/recycled-plastic.jpg", pos: "center",
+    eyebrow: "Loft insulation · Post-1965 homes",
+    title: [{t:"Recycled plastic", mk:true},{t:" loft insulation."}],
+    points: ["Made from recycled bottles", "Soft & safe to handle", "Best for post-1965 homes"] },
+
+  { slug: "hemp", img: "../assets/hemp.jpg", pos: "center",
+    eyebrow: "Loft insulation · Vegan & natural",
+    title: [{t:"Hemp", mk:true},{t:" loft insulation."}],
+    points: ["Vegan & plant-based", "Breathable & moisture-regulating", "Carbon-negative fibre"] },
+
+  { slug: "loft-storage", img: "../assets/loft-storage-room.jpg", pos: "center",
+    eyebrow: "Loft storage · Practical · Safe",
+    title: [{t:"Make "},{t:"more", mk:true},{t:" of your loft."}],
+    points: ["Boarding, ladders & hatches", "Safe, compliant access", "Professionally fitted"] },
+
+  { slug: "loft-boarding", img: "../assets/loft-boarding.jpg", pos: "center",
+    eyebrow: "Loft storage · Reclaim your space",
+    title: [{t:"Loft boarding", mk:true},{t:", done right."}],
+    points: ["Raised over your insulation", "Building-regs compliant", "Strong, safe storage floor"] },
+
+  { slug: "loft-ladders", img: "../assets/loft-ladder.jpg", pos: "center",
+    eyebrow: "Loft storage · Safe access",
+    title: [{t:"Safe, easy "},{t:"loft access.", mk:true}],
+    points: ["Sturdy & space-saving", "Professionally fitted", "No more wobbly step-ladders"] },
+
+  { slug: "loft-hatch", img: "../assets/loft-hatch.jpg", pos: "center",
+    eyebrow: "Loft storage · Draught-sealed",
+    title: [{t:"Insulated", mk:true},{t:" loft hatches."}],
+    points: ["Insulated & draught-sealed", "Part L compliant", "Stops landing draughts"] },
+
+  { slug: "loft-storage-rooms", img: "../assets/loft-storage-room.jpg", pos: "center",
+    eyebrow: "Loft storage · More usable space",
+    title: [{t:"Loft "},{t:"storage rooms.", mk:true}],
+    points: ["Fully boarded & lit", "Safe ladder & hatch access", "Insulation kept intact"] },
+];
+
+function titleHTML(segs){
+  return segs.map(s => s.mk ? `<span class="mk">${s.t}</span>` : s.t).join("");
+}
+function pointsHTML(pts){
+  return pts.map(p => `<li><span class="tick">${TICK}</span>${p}</li>`).join("");
+}
+function cardHTML(c){
+  return `
+  <article class="og" data-slug="${c.slug}">
+    <div class="og__photo"><img src="${c.img}" style="object-position:${c.pos||'center'}" alt=""></div>
+    <div class="og__body">
+      <div class="og__top">
+        <div class="og__logo">
+          ${LOGO}
+          <div class="og__wordmark">loft<br>insulation<br>installer</div>
+        </div>
+      </div>
+      <div class="og__mid">
+        <p class="og__eyebrow">${c.eyebrow}</p>
+        <h1 class="og__title">${titleHTML(c.title)}</h1>
+        <ul class="og__points">${pointsHTML(c.points)}</ul>
+      </div>
+      <div class="og__foot">
+        <span class="og__url">loftinsulationinstaller.co.uk</span>
+        <span class="og__rating"><span class="og__stars">${STAR.repeat(5)}</span><span>Rated 4.9/5</span></span>
+      </div>
+    </div>
+  </article>`;
+}
+
+const stage = document.getElementById('stage');
+stage.innerHTML = CARDS.map(c => `<div class="label">${c.slug}.png — /${c.slug==='home'?'':c.slug}</div>` + cardHTML(c)).join("");
+
+// Isolate a single card, scaled to fully fit the capture viewport (so the
+// footer is never cropped). We capture at high-DPR then downscale to an
+// exact 1200x630 file afterwards.
+window.showCard = function(i){
+  document.documentElement.style.background = '#fff';
+  document.body.style.background = '#fff';
+  const cards = [...document.querySelectorAll('.og')];
+  const labels = [...document.querySelectorAll('.label')];
+  labels.forEach(el => el.style.display = 'none');
+  stage.style.padding = '0';
+  stage.style.gap = '0';
+  stage.style.position = 'fixed';
+  stage.style.left = '0'; stage.style.top = '0';
+  cards.forEach((el, idx) => {
+    if (idx === i) {
+      el.style.display = 'flex';
+      const scale = Math.min(window.innerWidth / 1200, window.innerHeight / 630);
+      el.style.transformOrigin = 'top left';
+      el.style.transform = 'scale(' + scale + ')';
+      el.style.position = 'fixed';
+      el.style.left = '0'; el.style.top = '0';
+    } else {
+      el.style.display = 'none';
+      el.style.transform = 'none';
+    }
+  });
+  window.scrollTo(0, 0);
+  return CARDS[i].slug;
+};
+window.CARDS = CARDS;
+</script>
+</body>
+</html>
