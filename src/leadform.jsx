@@ -7,9 +7,7 @@ const INSULATION_TYPES = [
   "Foil (SuperFOIL): reflective, for 1920–1965 homes",
   "Recycled Plastic (SupaSoft): for post-1965 homes",
   "Hemp: natural, vegan, breathable",
-  "Loft Boarding",
-  "Loft Ladder",
-  "Loft Hatch",
+  "Loft Storage",
   "Not sure: please recommend the right option",
 ];
 const AGES = [

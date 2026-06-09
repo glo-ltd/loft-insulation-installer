@@ -33,7 +33,7 @@ function HubHero({ d, onNav }) {
           </div>
         </div>
         <div className="hero__media">
-          <LeadForm onNav={onNav} compact title="Get your free quote." sub="Most surveys booked within 48 hours. No obligation." />
+          <LeadForm onNav={onNav} compact presetType={d.silo === "loft-storage" ? "Loft Storage" : ""} title="Get your free quote." sub="Most surveys booked within 48 hours. No obligation." />
         </div>
       </div>
     </WavePanel>
@@ -108,7 +108,7 @@ function HubForm({ d, onNav }) {
         <SectionHead eyebrow="Book a free survey" title="Get your free, no-obligation quote." marker
           sub="Send us your details and an accredited local installer will call you back to arrange a free survey at a time that suits you." />
         <div className="finalform">
-          <LeadForm onNav={onNav} title="Request your free quote." sub="Takes under a minute. No obligation, ever." />
+          <LeadForm onNav={onNav} presetType={d.silo === "loft-storage" ? "Loft Storage" : ""} title="Request your free quote." sub="Takes under a minute. No obligation, ever." />
           <aside className="finalform__aside">
             <Card raised style={{ padding: 30 }}>
               <h3 style={{ fontFamily: "var(--font-heading)", color: "var(--text-heading)", fontSize: 21, margin: "0 0 18px" }}>What you get</h3>

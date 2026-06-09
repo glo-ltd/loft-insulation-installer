@@ -346,7 +346,7 @@ const MATERIALS = {
   "loft-boarding": {
     id: "loft-boarding", silo: "loft-storage", siloLabel: "Loft Storage",
     brand: "Raised boarding", name: "Loft Boarding", h1: "Loft boarding.",
-    tag: "Reclaim your space", img: "/assets/loft-boarding.jpg", presetType: "Loft Boarding",
+    tag: "Reclaim your space", img: "/assets/loft-boarding.jpg", presetType: "Loft Storage",
     hero: "Safe, usable loft storage, fitted by accredited local installers. We board over your insulation on a raised sub-frame, so you gain a proper storage floor without losing thermal performance.",
     heroPoints: ["Raised over your insulation", "Building-regs compliant", "Strong, safe storage floor"],
     overviewEyebrow: "What it is",
@@ -406,7 +406,7 @@ const MATERIALS = {
   "loft-ladders": {
     id: "loft-ladders", silo: "loft-storage", siloLabel: "Loft Storage",
     brand: "Fitted ladders", name: "Loft Ladders", h1: "Loft ladders.",
-    tag: "Safe access", img: "/assets/loft-ladder.jpg", presetType: "Loft Ladder",
+    tag: "Safe access", img: "/assets/loft-ladder.jpg", presetType: "Loft Storage",
     hero: "Sturdy, space-saving loft ladders, professionally fitted by accredited local installers. Safe, easy access to your loft, with no more balancing on chairs or wobbly step-ladders.",
     heroPoints: ["Sturdy & space-saving", "Professionally fitted", "Safe, easy access"],
     overviewEyebrow: "What it is",
@@ -466,7 +466,7 @@ const MATERIALS = {
   "loft-hatch": {
     id: "loft-hatch", silo: "loft-storage", siloLabel: "Loft Storage",
     brand: "Insulated hatch", name: "Loft Hatch", h1: "Loft hatches.",
-    tag: "Insulated & draught-sealed", img: "/assets/loft-hatch.jpg", presetType: "Loft Hatch",
+    tag: "Insulated & draught-sealed", img: "/assets/loft-hatch.jpg", presetType: "Loft Storage",
     hero: "Insulated, draught-sealed loft hatches, fitted by accredited local installers. Stop heat escaping through an old, leaky hatch, and keep your landing warmer.",
     heroPoints: ["Insulated & draught-sealed", "Part L compliant", "Stops landing draughts"],
     overviewEyebrow: "What it is",
@@ -526,7 +526,7 @@ const MATERIALS = {
   "loft-storage-rooms": {
     id: "loft-storage-rooms", silo: "loft-storage", siloLabel: "Loft Storage",
     brand: "Complete package", name: "Loft Storage Rooms", h1: "Loft storage rooms.",
-    tag: "More usable space", img: "/assets/loft-storage-room.jpg", presetType: "Loft Boarding",
+    tag: "More usable space", img: "/assets/loft-storage-room.jpg", presetType: "Loft Storage",
     hero: "Complete loft storage rooms, created by accredited local installers. A clean, fully-boarded and lit space with safe access, ready to use, without compromising your insulation.",
     heroPoints: ["Fully boarded & lit", "Safe ladder & hatch access", "Insulation kept intact"],
     overviewEyebrow: "What it is",
