@@ -5,8 +5,14 @@
 # --- SEO migration: 301 redirects from old (WordPress) URLs to new paths. ---
 # These MUST come before the SPA catch-all below: Netlify uses first-match-wins,
 # so listing them first ensures a real 301 is issued instead of the 200 rewrite.
+# Both trailing-slash and no-slash variants are covered for each old URL.
 [[redirects]]
   from = "/sheep-wool/"
+  to = "/loft-insulation/sheep-wool/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/sheep-wool"
   to = "/loft-insulation/sheep-wool/"
   status = 301
   force = true
@@ -16,9 +22,19 @@
   to = "/loft-insulation/recycled-plastic/"
   status = 301
   force = true
+[[redirects]]
+  from = "/recycled-plastic"
+  to = "/loft-insulation/recycled-plastic/"
+  status = 301
+  force = true
 
 [[redirects]]
   from = "/foil/"
+  to = "/loft-insulation/foil/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/foil"
   to = "/loft-insulation/foil/"
   status = 301
   force = true
@@ -28,15 +44,30 @@
   to = "/"
   status = 301
   force = true
+[[redirects]]
+  from = "/conservatory"
+  to = "/"
+  status = 301
+  force = true
 
 [[redirects]]
   from = "/cookie-policy-uk/"
   to = "/cookie-policy/"
   status = 301
   force = true
+[[redirects]]
+  from = "/cookie-policy-uk"
+  to = "/cookie-policy/"
+  status = 301
+  force = true
 
 [[redirects]]
   from = "/wpautoterms/privacy-policy/"
+  to = "/privacy-policy/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/wpautoterms/privacy-policy"
   to = "/privacy-policy/"
   status = 301
   force = true

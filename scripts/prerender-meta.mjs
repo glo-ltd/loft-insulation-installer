@@ -10,7 +10,7 @@
 
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { join } from "node:path";
-import { PAGE_META, getMetaTags, pageToPath } from "../src/seo.js";
+import { PAGE_META, getMetaTags, pageToPath, SITE_URL } from "../src/seo.js";
 
 const DIST = join(process.cwd(), "dist");
 const START = "<!-- seo:start -->";
@@ -61,3 +61,18 @@ for (const page of Object.keys(PAGE_META)) {
   count++;
 }
 console.log(`prerender-meta: wrote ${count} pages with per-page meta tags.`);
+
+// sitemap.xml — only indexable pages (skip anything marked noindex).
+const indexPages = Object.keys(PAGE_META).filter(
+  (page) => !getMetaTags(page).names.robots.includes("noindex"),
+);
+const urls = indexPages
+  .map((page) => `  <url>\n    <loc>${SITE_URL}${pageToPath(page)}</loc>\n  </url>`)
+  .join("\n");
+const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls}
+</urlset>
+`;
+writeFileSync(join(DIST, "sitemap.xml"), sitemap, "utf8");
+console.log(`prerender-meta: wrote sitemap.xml with ${indexPages.length} URLs.`);

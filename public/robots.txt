@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://loftinsulationinstaller.co.uk/sitemap.xml
