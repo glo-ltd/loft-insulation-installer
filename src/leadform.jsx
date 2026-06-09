@@ -142,6 +142,16 @@ function LeadForm({ onNav, compact = false, title, sub, presetType = "" }) {
         });
       } catch (_) {}
     }
+    // Fire a GA4 conversion via GTM's dataLayer. No personal data is sent
+    // (no name/email/phone) — only non-PII context, per GA4 policy.
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: "generate_lead",
+      form_name: "lead_form",
+      service_interest: type || "unspecified",
+      estimated_monthly_bill: ctx?.bill,
+      estimated_yearly_saving: ctx?.yearly,
+    });
     setLeadContext(ctx);
     onNav("thank-you");
   };
