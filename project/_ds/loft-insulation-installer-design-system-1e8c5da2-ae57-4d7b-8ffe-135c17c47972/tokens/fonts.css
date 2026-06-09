@@ -1,0 +1,9 @@
+/* ============================================================
+   Loft Insulation Installer — Webfonts
+   Brand typeface: Encode Sans (superfamily).
+   Headings  → Encode Sans SemiCondensed, Bold (700)
+   Body      → Encode Sans SemiExpanded, Medium (500)
+   Loaded from Google Fonts (exact family — no substitution).
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+SemiCondensed:wght@400;500;600;700;800&family=Encode+Sans+Semi+Expanded:wght@400;500;600;700&family=Encode+Sans:wght@400;500;600;700;800&display=swap');

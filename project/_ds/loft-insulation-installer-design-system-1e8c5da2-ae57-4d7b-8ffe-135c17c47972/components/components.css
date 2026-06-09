@@ -1,0 +1,120 @@
+/* ============================================================
+   Loft Insulation Installer — Component styles
+   Class-based styling for the React primitives (hover/focus/
+   active states that inline styles can't express). Components
+   apply these classes; all values come from the design tokens.
+   ============================================================ */
+
+/* ---------- Button ---------- */
+.lii-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  font-family: var(--font-ui);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-button);
+  border-radius: var(--radius-pill);
+  border: var(--border-medium) solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color var(--dur-base) var(--ease-out),
+              color var(--dur-base) var(--ease-out),
+              border-color var(--dur-base) var(--ease-out),
+              transform var(--dur-fast) var(--ease-out);
+  user-select: none;
+}
+.lii-btn:hover { text-decoration: none; }
+.lii-btn:active { transform: translateY(1px) scale(0.99); }
+.lii-btn:focus-visible { outline: none; box-shadow: var(--shadow-focus); }
+.lii-btn[disabled], .lii-btn[aria-disabled="true"] {
+  opacity: 0.45; cursor: not-allowed; pointer-events: none;
+}
+
+/* sizes */
+.lii-btn--sm { font-size: 13px; padding: 8px 16px; }
+.lii-btn--md { font-size: 15px; padding: 12px 22px; }
+.lii-btn--lg { font-size: 17px; padding: 15px 30px; }
+.lii-btn--block { width: 100%; }
+
+/* variants */
+.lii-btn--primary { background: var(--lii-warm-orange); color: #fff; }
+.lii-btn--primary:hover { background: var(--lii-orange-600); }
+
+.lii-btn--secondary { background: var(--lii-true-teal); color: #fff; }
+.lii-btn--secondary:hover { background: var(--lii-dark-slate); }
+
+.lii-btn--outline { background: transparent; color: var(--lii-true-teal); border-color: var(--lii-true-teal); }
+.lii-btn--outline:hover { background: var(--lii-true-teal); color: #fff; }
+
+.lii-btn--ghost { background: transparent; color: var(--lii-true-teal); }
+.lii-btn--ghost:hover { background: var(--lii-cool-mist); }
+
+/* on dark surfaces */
+.lii-btn--on-dark.lii-btn--outline { color: #fff; border-color: rgba(255,255,255,0.6); }
+.lii-btn--on-dark.lii-btn--outline:hover { background: #fff; color: var(--lii-dark-slate); border-color: #fff; }
+
+/* ---------- Input ---------- */
+.lii-field { display: flex; flex-direction: column; gap: 6px; }
+.lii-label { font-family: var(--font-ui); font-weight: var(--fw-semibold); font-size: var(--fs-body-sm); color: var(--text-heading); }
+.lii-input {
+  font-family: var(--font-body);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-body);
+  color: var(--text-heading);
+  background: #fff;
+  border: var(--border-thin) solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  transition: border-color var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out);
+  width: 100%;
+  box-sizing: border-box;
+}
+.lii-input::placeholder { color: var(--text-muted); }
+.lii-input:hover { border-color: var(--lii-stone-grey); }
+.lii-input:focus { outline: none; border-color: var(--lii-warm-orange); box-shadow: var(--shadow-focus); }
+.lii-input--error { border-color: var(--color-danger); }
+.lii-hint { font-family: var(--font-ui); font-size: var(--fs-caption); color: var(--text-muted); }
+.lii-hint--error { color: var(--color-danger); }
+
+/* ---------- Checkbox ---------- */
+.lii-check { display: inline-flex; align-items: flex-start; gap: 10px; cursor: pointer; font-family: var(--font-body); font-size: var(--fs-body); color: var(--text-body); }
+.lii-check input { position: absolute; opacity: 0; width: 0; height: 0; }
+.lii-check__box {
+  flex: none; width: 22px; height: 22px; margin-top: 1px;
+  border: var(--border-medium) solid var(--border-strong);
+  border-radius: 6px; background: #fff;
+  display: grid; place-items: center;
+  transition: background-color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+}
+.lii-check__box svg { opacity: 0; transform: scale(0.6); transition: all var(--dur-fast) var(--ease-out); }
+.lii-check input:checked + .lii-check__box { background: var(--lii-warm-orange); border-color: var(--lii-warm-orange); }
+.lii-check input:checked + .lii-check__box svg { opacity: 1; transform: scale(1); }
+.lii-check input:focus-visible + .lii-check__box { box-shadow: var(--shadow-focus); }
+
+/* ---------- Card ---------- */
+.lii-card {
+  background: var(--surface-card);
+  border: var(--border-thin) solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+.lii-card--raised { box-shadow: var(--shadow-md); border-color: transparent; }
+.lii-card--interactive { transition: box-shadow var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out); cursor: pointer; }
+.lii-card--interactive:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+
+/* ---------- Badge ---------- */
+.lii-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font-ui); font-weight: var(--fw-bold);
+  font-size: var(--fs-caption); line-height: 1;
+  padding: 6px 12px; border-radius: var(--radius-pill);
+  letter-spacing: 0.01em;
+}
+.lii-badge--orange { background: var(--lii-orange-100); color: var(--lii-orange-600); }
+.lii-badge--green  { background: var(--lii-green-100); color: #4A6A1E; }
+.lii-badge--teal   { background: var(--lii-cool-mist); color: var(--lii-true-teal); }
+.lii-badge--solid  { background: var(--lii-warm-orange); color: #fff; }
+.lii-badge--success{ background: #E2F2EA; color: var(--color-success); }

@@ -1,0 +1,78 @@
+/* ============================================================
+   Loft Insulation Installer — Colour tokens
+   The palette is built from the six named brand colours plus
+   white. Dark teals dominate; warm orange is the single hot
+   accent; grass green is a fresh highlight; cool mist + stone
+   grey carry neutrals.
+   ============================================================ */
+
+:root {
+  /* ---- Brand palette (named in the guidelines) ---- */
+  --lii-dark-slate:  #0C282E;  /* deepest brand dark — backgrounds, headings */
+  --lii-true-teal:   #0B4C5B;  /* primary brand colour — panels, surfaces */
+  --lii-warm-orange: #F66904;  /* hot accent — CTAs, the heat-wave motif */
+  --lii-grass-green: #C6E299;  /* fresh highlight — marker, eco accents */
+  --lii-stone-grey:  #3B5156;  /* muted body text on light */
+  --lii-cool-mist:   #EBEFEF;  /* light neutral surface */
+  --lii-white:       #FFFFFF;
+
+  /* ---- Extended teal ramp (sampled across the guidelines) ---- */
+  --lii-teal-900: #06222D;  /* near-black teal, layered wave shadow */
+  --lii-teal-800: #0C282E;  /* = dark slate */
+  --lii-teal-700: #044147;
+  --lii-teal-600: #0B4C5B;  /* = true teal */
+  --lii-teal-500: #0D4756;  /* heading teal used on light pages */
+  --lii-teal-400: #36586180;
+
+  /* ---- Orange ramp ---- */
+  --lii-orange-600: #D95A00;  /* pressed / hover-dark */
+  --lii-orange-500: #F66904;  /* = warm orange */
+  --lii-orange-400: #FD7F17;  /* lighter orange (logo gradients) */
+  --lii-orange-100: #FEE9D7;  /* orange tint surface */
+
+  /* ---- Green ramp ---- */
+  --lii-green-300: #C6E299;  /* = grass green */
+  --lii-green-200: #DCEBC2;
+  --lii-green-100: #EDF4E0;
+
+  /* ---- Neutral ramp ---- */
+  --lii-neutral-0:   #FFFFFF;
+  --lii-neutral-50:  #F6F8F8;
+  --lii-neutral-100: #EBEFEF;  /* = cool mist */
+  --lii-neutral-200: #DCE3E3;
+  --lii-neutral-300: #C4CFCF;
+  --lii-neutral-500: #3B5156;  /* = stone grey */
+  --lii-neutral-700: #1C3338;
+  --lii-neutral-900: #0C282E;
+
+  /* ---- Semantic aliases ---- */
+  --color-bg:            var(--lii-white);
+  --color-bg-muted:      var(--lii-cool-mist);
+  --color-bg-inverse:    var(--lii-dark-slate);
+  --surface-card:        var(--lii-white);
+  --surface-panel:       var(--lii-true-teal);
+  --surface-panel-dark:  var(--lii-dark-slate);
+
+  --text-heading:    var(--lii-teal-500);   /* headings on light */
+  --text-body:       var(--lii-stone-grey); /* body on light */
+  --text-muted:      #6A7C80;
+  --text-on-dark:    var(--lii-white);
+  --text-on-dark-muted: #B7C4C7;
+  --text-link:       var(--lii-true-teal);
+
+  --color-accent:        var(--lii-warm-orange);
+  --color-accent-hover:  var(--lii-orange-600);
+  --color-accent-tint:   var(--lii-orange-100);
+  --color-highlight:     var(--lii-grass-green);  /* the marker swipe */
+
+  --border-subtle:   var(--lii-neutral-200);
+  --border-strong:   var(--lii-neutral-300);
+  --border-on-dark:  rgba(255,255,255,0.18);
+
+  --focus-ring:      var(--lii-warm-orange);
+
+  /* ---- Status ---- */
+  --color-success: #1F8A5B;
+  --color-warning: #F6A904;
+  --color-danger:  #D83459;  /* rose used in personas */
+}
