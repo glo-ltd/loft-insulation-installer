@@ -195,7 +195,7 @@ function Footer({ onNav, page }) {
           </div>
         </div>
         <div className="footer__bottom">
-          <span>© 2026 Loft Insulation Installer. All rights reserved. &nbsp;·&nbsp; <a href="#privacy-policy" onClick={link("privacy-policy")} style={{ display: "inline", color: "inherit" }}>Privacy Policy</a> &nbsp;·&nbsp; <a href="#cookie-policy" onClick={link("cookie-policy")} style={{ display: "inline", color: "inherit" }}>Cookie Policy</a></span>
+          <span>© 2026 Loft Insulation Installer. All rights reserved. &nbsp;·&nbsp; <a href="#privacy-policy" onClick={link("privacy-policy")} style={{ display: "inline", color: "inherit" }}>Privacy Policy</a> &nbsp;·&nbsp; <a href="#cookie-policy" onClick={link("cookie-policy")} style={{ display: "inline", color: "inherit" }}>Cookie Policy</a> &nbsp;·&nbsp; <a href="#" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new Event("lii-open-consent")); }} style={{ display: "inline", color: "inherit" }}>Cookie settings</a></span>
           <span className="glo">SEO Web Design by <a href="https://generateleads.online/" target="_blank" rel="noopener" style={{ color: "inherit" }}>GLO</a></span>
         </div>
       </div>

@@ -8,6 +8,7 @@ import { ThankYouPage } from './thankyou.jsx';
 import { ServicePage } from './service.jsx';
 import { HubPage } from './hub.jsx';
 import { LegalPage, LEGAL_PAGES as LEGAL_PAGES_LIST } from './legal.jsx';
+import { CookieBanner } from './CookieBanner.jsx';
 import { MATERIALS, HUBS } from './materials-data.jsx';
 
 const SERVICE_PAGES = Object.keys(MATERIALS);
@@ -116,6 +117,7 @@ function App() {
       {content}
       <Footer onNav={onNav} page={page} />
       <StickyCTA onNav={onNav} />
+      <CookieBanner onNav={onNav} />
     </div>
   );
 }
