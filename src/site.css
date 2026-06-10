@@ -4,6 +4,10 @@
    from the bound design-system tokens + classes (_ds/.../styles.css).
    =========================================================================== */
 
+/* Nudge the muted text token a shade darker so small grey captions clear the
+   WCAG AA 4.5:1 contrast threshold (was #6A7C80 = 4.37:1, now 4.87:1). */
+:root { --text-muted: #647478; }
+
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { margin: 0; background: #fff; }
@@ -88,7 +92,7 @@ img { max-width: 100%; display: block; }
 .leadform { background: #fff; border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); padding: 30px; color: var(--text-body); }
 .leadform--inline { box-shadow: var(--shadow-md); }
 .leadform__head { margin-bottom: 18px; }
-.leadform__head h3 { font-family: var(--font-heading); color: var(--text-heading); font-size: 24px; margin: 0 0 6px; }
+.leadform__head h2 { font-family: var(--font-heading); color: var(--text-heading); font-size: 24px; margin: 0 0 6px; }
 .leadform__head p { margin: 0; font-size: 14.5px; color: var(--text-body); }
 .lf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
 .lf-field { margin-bottom: 14px; }
@@ -213,7 +217,7 @@ select.lii-input { appearance: none; background-image: url("data:image/svg+xml,%
 .step { position: relative; }
 .step__n { width: 50px; height: 50px; border-radius: 50%; background: var(--lii-true-teal); color: #fff; font-family: var(--font-heading); font-weight: var(--fw-bold); font-size: 20px; display: grid; place-items: center; margin-bottom: 18px; position: relative; z-index: 2; }
 .step:not(:last-child) .step__n::after { content: ""; position: absolute; left: 50px; top: 50%; width: calc(100% + 18px - 50px); height: 2px; background: var(--border-strong); z-index: -1; }
-.step h4 { margin: 0 0 8px; font-size: 18px; }
+.step h3 { margin: 0 0 8px; font-size: 18px; }
 .step p { margin: 0; font-size: 14px; }
 
 /* ---------- Funding / savings strip ---------- */
@@ -265,7 +269,9 @@ select.lii-input { appearance: none; background-image: url("data:image/svg+xml,%
 /* ---------- Footer ---------- */
 .footer { background: var(--lii-dark-slate); color: var(--text-on-dark-muted); padding: 68px 0 32px; }
 .footer__grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px; }
-.footer h5 { font-family: var(--font-ui); font-weight: var(--fw-bold); color: #fff; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; margin: 0 0 16px; }
+.footer h2 { font-family: var(--font-ui); font-weight: var(--fw-bold); color: #fff; font-size: 13px; line-height: 1.2; letter-spacing: .06em; text-transform: uppercase; margin: 0 0 16px; }
+.footer__cookiebtn { display: inline; background: none; border: 0; padding: 0; margin: 0; font-family: inherit; font-size: 14.5px; color: inherit; cursor: pointer; }
+.footer__cookiebtn:hover { color: #fff; }
 .footer a { display: block; color: var(--text-on-dark-muted); font-size: 14.5px; padding: 5px 0; cursor: pointer; }
 .footer a:hover { color: #fff; text-decoration: none; }
 .footer__disc { font-size: 13px; line-height: 1.65; margin: 18px 0 0; max-width: 36em; }
@@ -376,7 +382,7 @@ select.lii-input { appearance: none; background-image: url("data:image/svg+xml,%
 /* ---------- Cookie consent banner ---------- */
 .cookie-banner { position: fixed; left: 0; right: 0; bottom: 0; z-index: 95; padding: 16px; padding-bottom: calc(16px + env(safe-area-inset-bottom)); display: flex; justify-content: center; pointer-events: none; }
 .cookie-banner__in { pointer-events: auto; width: 100%; max-width: 1080px; background: #fff; border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); padding: 20px 24px; display: flex; align-items: center; gap: 24px; }
-.cookie-banner__text h4 { font-family: var(--font-heading); font-weight: var(--fw-bold); color: var(--text-heading); font-size: 16px; margin: 0 0 4px; }
+.cookie-banner__text h2 { font-family: var(--font-heading); font-weight: var(--fw-bold); color: var(--text-heading); font-size: 16px; margin: 0 0 4px; }
 .cookie-banner__text p { font-family: var(--font-body); color: var(--text-body); font-size: 14px; line-height: 1.55; margin: 0; }
 .cookie-banner__text a { color: var(--lii-true-teal); text-decoration: underline; }
 .cookie-banner__actions { display: flex; gap: 10px; flex: none; }

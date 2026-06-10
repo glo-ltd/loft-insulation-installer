@@ -73,7 +73,7 @@ function Logo({ variant = "teal", size = 42, wordmark = true, onClick }) {
   const c = LOGO_COLORS[variant] || LOGO_COLORS.teal;
   const w = (64 / 70.573) * size;
   return (
-    <span onClick={onClick} aria-label="Loft Insulation Installer home" role={onClick ? "button" : undefined}
+    <span onClick={onClick} aria-label="Loft Insulation Installer home" role={onClick ? "button" : "img"}
           style={{ display: "inline-flex", alignItems: "center", gap: size * 0.32, cursor: onClick ? "pointer" : "default" }}>
       <svg width={w} height={size} viewBox="0 0 64 70.573" fill="none" style={{ flex: "none" }}>
         <path d={LOGO_HOUSE} fill={c.h} fillRule="evenodd" />

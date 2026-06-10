@@ -2,6 +2,11 @@ import React from 'react';
 // Global chrome: utility bar, two-silo header, CTA band, footer, sticky mobile CTA.
 // FORM-ONLY contact model: no phone numbers or email addresses anywhere.
 import { LIcons, Logo, Button, WavePanel } from './ui.jsx';
+import { pageToPath } from './seo.js';
+
+// Real, crawlable href for a page id; section links point at the homepage anchor.
+const hrefFor = (id) => pageToPath(id);
+const hrefSec = (anchor) => "/#" + anchor;
 
 // Brand social glyphs (supplied SVGs): inherit currentColor so they stay white
 // in the footer and recolour on hover.
@@ -119,14 +124,14 @@ function Header({ onNav, page }) {
             <button className="burger" aria-label="Close menu" onClick={() => setOpen(false)}><Ic.X size={26} /></button>
           </div>
           <div className="mm-group">Loft Insulation</div>
-          <a onClick={() => go("loft-insulation")}>All Loft Insulation</a>
-          {INSULATION.map(([id, label]) => <a key={id} onClick={() => go(id)}>{label}</a>)}
+          <a href={hrefFor("loft-insulation")} onClick={(e) => { e.preventDefault(); go("loft-insulation"); }}>All Loft Insulation</a>
+          {INSULATION.map(([id, label]) => <a key={id} href={hrefFor(id)} onClick={(e) => { e.preventDefault(); go(id); }}>{label}</a>)}
           <div className="mm-group">Loft Storage</div>
-          <a onClick={() => go("loft-storage")}>All Loft Storage</a>
-          {STORAGE.map(([id, label]) => <a key={id} onClick={() => go(id)}>{label}</a>)}
+          <a href={hrefFor("loft-storage")} onClick={(e) => { e.preventDefault(); go("loft-storage"); }}>All Loft Storage</a>
+          {STORAGE.map(([id, label]) => <a key={id} href={hrefFor(id)} onClick={(e) => { e.preventDefault(); go(id); }}>{label}</a>)}
           <div className="mm-group">More</div>
-          <a onClick={() => sec("why")}>Why choose us</a>
-          <a onClick={() => sec("reviews")}>Reviews</a>
+          <a href={hrefSec("why")} onClick={(e) => { e.preventDefault(); sec("why"); }}>Why choose us</a>
+          <a href={hrefSec("reviews")} onClick={(e) => { e.preventDefault(); sec("reviews"); }}>Reviews</a>
           <Button variant="primary" size="lg" block onClick={() => sec("quote")} rightIcon={<Ic.Arrow size={18} />}>Get a free quote</Button>
         </div>
       </div>
@@ -177,25 +182,25 @@ function Footer({ onNav, page }) {
             </div>
           </div>
           <div>
-            <h5>Loft Insulation</h5>
-            <a href="#" onClick={link("loft-insulation")}>All Loft Insulation</a>
-            {INSULATION.map(([id, label]) => <a key={id} href="#" onClick={link(id)}>{label}</a>)}
+            <h2>Loft Insulation</h2>
+            <a href={hrefFor("loft-insulation")} onClick={link("loft-insulation")}>All Loft Insulation</a>
+            {INSULATION.map(([id, label]) => <a key={id} href={hrefFor(id)} onClick={link(id)}>{label}</a>)}
           </div>
           <div>
-            <h5>Loft Storage</h5>
-            <a href="#" onClick={link("loft-storage")}>All Loft Storage</a>
-            {STORAGE.map(([id, label]) => <a key={id} href="#" onClick={link(id)}>{label}</a>)}
+            <h2>Loft Storage</h2>
+            <a href={hrefFor("loft-storage")} onClick={link("loft-storage")}>All Loft Storage</a>
+            {STORAGE.map(([id, label]) => <a key={id} href={hrefFor(id)} onClick={link(id)}>{label}</a>)}
           </div>
           <div>
-            <h5>Company</h5>
-            <a href="#" onClick={sec("why")}>Why choose us</a>
-            <a href="#" onClick={sec("reviews")}>Reviews</a>
-            <a href="#" onClick={sec("faq")}>FAQs</a>
-            <a href="#" onClick={sec("quote")}>Get a free quote</a>
+            <h2>Company</h2>
+            <a href={hrefSec("why")} onClick={sec("why")}>Why choose us</a>
+            <a href={hrefSec("reviews")} onClick={sec("reviews")}>Reviews</a>
+            <a href={hrefSec("faq")} onClick={sec("faq")}>FAQs</a>
+            <a href={hrefSec("quote")} onClick={sec("quote")}>Get a free quote</a>
           </div>
         </div>
         <div className="footer__bottom">
-          <span>© 2026 Loft Insulation Installer. All rights reserved. &nbsp;·&nbsp; <a href="#privacy-policy" onClick={link("privacy-policy")} style={{ display: "inline", color: "inherit" }}>Privacy Policy</a> &nbsp;·&nbsp; <a href="#cookie-policy" onClick={link("cookie-policy")} style={{ display: "inline", color: "inherit" }}>Cookie Policy</a> &nbsp;·&nbsp; <a href="#" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new Event("lii-open-consent")); }} style={{ display: "inline", color: "inherit" }}>Cookie settings</a></span>
+          <span>© 2026 Loft Insulation Installer. All rights reserved. &nbsp;·&nbsp; <a href={hrefFor("privacy-policy")} onClick={link("privacy-policy")} style={{ display: "inline", color: "inherit" }}>Privacy Policy</a> &nbsp;·&nbsp; <a href={hrefFor("cookie-policy")} onClick={link("cookie-policy")} style={{ display: "inline", color: "inherit" }}>Cookie Policy</a> &nbsp;·&nbsp; <button type="button" className="footer__cookiebtn" onClick={() => window.dispatchEvent(new Event("lii-open-consent"))}>Cookie settings</button></span>
           <span className="glo">SEO Web Design by <a href="https://generateleads.online/" target="_blank" rel="noopener" style={{ color: "inherit" }}>GLO</a></span>
         </div>
       </div>

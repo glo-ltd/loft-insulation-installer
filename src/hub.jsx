@@ -6,6 +6,7 @@ import { LeadForm } from './leadform.jsx';
 import { TrustBar, Process, Reviews, WhyPro, Funding } from './home.jsx';
 import { CtaBand } from './chrome.jsx';
 import { SERVICE_INDEX, HUBS } from './materials-data.jsx';
+import { pageToPath } from './seo.js';
 
 function HubHero({ d, onNav }) {
   const Ic = LIcons;
@@ -14,7 +15,7 @@ function HubHero({ d, onNav }) {
       <div className="wrap hero__grid">
         <div>
           <div className="breadcrumb">
-            <a onClick={() => onNav("home")}>Home</a>
+            <a href={pageToPath("home")} onClick={(e) => { e.preventDefault(); onNav("home"); }}>Home</a>
             <Ic.Chevron size={13} style={{ transform: "rotate(-90deg)" }} />
             <span style={{ color: "#fff" }}>{d.siloLabel}</span>
           </div>

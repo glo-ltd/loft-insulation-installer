@@ -113,7 +113,7 @@ function App() {
     <div className="site">
       <TopBar />
       <Header onNav={onNav} page={page} />
-      {content}
+      <main id="main">{content}</main>
       <Footer onNav={onNav} page={page} />
       <CookieBanner onNav={onNav} />
     </div>

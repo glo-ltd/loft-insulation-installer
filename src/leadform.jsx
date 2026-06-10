@@ -167,7 +167,7 @@ function LeadForm({ onNav, compact = false, title, sub, presetType = "" }) {
     <form className={`leadform ${compact ? "leadform--inline" : ""}`} onSubmit={submit}>
       {(title || sub) && (
         <div className="leadform__head">
-          {title && <h3>{title}</h3>}
+          {title && <h2>{title}</h2>}
           {sub && <p>{sub}</p>}
         </div>
       )}
@@ -190,7 +190,7 @@ function LeadForm({ onNav, compact = false, title, sub, presetType = "" }) {
       <div className="lf-field"><label>Email <span className="req">*</span></label><input className="lii-input" type="email" placeholder="jane@example.com" required value={email} onChange={(e) => setEmail(e.target.value)} /></div>
       <div className="lf-field">
         <label>What are you interested in?</label>
-        <select className="lii-input" value={type} onChange={(e) => { setType(e.target.value); }}>
+        <select aria-label="What are you interested in?" className="lii-input" value={type} onChange={(e) => { setType(e.target.value); }}>
           <option value="">Choose a service… (optional)</option>
           {INSULATION_TYPES.map((t) => <option key={t} value={t}>{t}</option>)}
         </select>

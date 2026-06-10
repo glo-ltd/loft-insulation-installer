@@ -244,7 +244,7 @@ function Process({ eyebrow = "How it works", title = "A simple, hassle-free proc
           {STEPS.map(([t, b], i) => (
             <div className="step reveal" key={t}>
               <div className="step__n">{String(i + 1).padStart(2, "0")}</div>
-              <h4>{t}</h4>
+              <h3>{t}</h3>
               <p>{b}</p>
             </div>
           ))}

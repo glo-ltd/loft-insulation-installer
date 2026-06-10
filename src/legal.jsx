@@ -5,6 +5,7 @@
 // model. Both should be reviewed by a qualified adviser before going live.
 import React from 'react';
 import { LIcons, WavePanel, Button, useReveal } from './ui.jsx';
+import { pageToPath } from './seo.js';
 
 const PRIVACY = {
   id: "privacy-policy",
@@ -234,7 +235,7 @@ function LegalPage({ id, onNav }) {
       <WavePanel color="dark-slate" radius="0" style={{ color: "#fff" }}>
         <div className="wrap" style={{ padding: "64px 28px 68px", maxWidth: 860 }}>
           <div className="breadcrumb">
-            <a onClick={() => onNav("home")}>Home</a>
+            <a href={pageToPath("home")} onClick={(e) => { e.preventDefault(); onNav("home"); }}>Home</a>
             <Ic.Chevron size={13} style={{ transform: "rotate(-90deg)" }} />
             <span style={{ color: "#fff" }}>{d.title.replace(".", "")}</span>
           </div>

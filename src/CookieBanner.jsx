@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from './ui.jsx';
+import { pageToPath } from './seo.js';
 
 // Cookie consent banner wired to Google Consent Mode (set up in index.html).
 // On "Accept", we flip analytics/ad consent to granted so GTM/GA4 may fire;
@@ -47,14 +48,14 @@ function CookieBanner({ onNav }) {
     <div className="cookie-banner" role="dialog" aria-label="Cookie consent" aria-live="polite">
       <div className="cookie-banner__in">
         <div className="cookie-banner__text">
-          <h4>We value your privacy</h4>
+          <h2>We value your privacy</h2>
           <p>
             We use essential cookies to make this site work. With your consent, we'd also like to use
             analytics cookies to understand how visitors use the site and improve it. You can change your
             choice at any time. See our{' '}
-            <a href="#cookie-policy" onClick={(e) => { e.preventDefault(); onNav('cookie-policy'); setOpen(false); }}>Cookie Policy</a>{' '}
+            <a href={pageToPath('cookie-policy')} onClick={(e) => { e.preventDefault(); onNav('cookie-policy'); setOpen(false); }}>Cookie Policy</a>{' '}
             and{' '}
-            <a href="#privacy-policy" onClick={(e) => { e.preventDefault(); onNav('privacy-policy'); setOpen(false); }}>Privacy Policy</a>.
+            <a href={pageToPath('privacy-policy')} onClick={(e) => { e.preventDefault(); onNav('privacy-policy'); setOpen(false); }}>Privacy Policy</a>.
           </p>
         </div>
         <div className="cookie-banner__actions">
