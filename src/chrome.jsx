@@ -203,13 +203,4 @@ function Footer({ onNav, page }) {
   );
 }
 
-function StickyCTA({ onNav }) {
-  const Ic = LIcons;
-  return (
-    <div className="sticky-cta">
-      <Button variant="primary" size="lg" block onClick={() => onNav("home", "quote")} rightIcon={<Ic.Arrow size={18} />}>Get a free quote</Button>
-    </div>
-  );
-}
-
-export { TopBar, Header, CtaBand, Footer, StickyCTA, INSULATION, STORAGE };
+export { TopBar, Header, CtaBand, Footer, INSULATION, STORAGE };

@@ -2,7 +2,7 @@
 // Full service pages render <ServicePage>; services without a built page yet
 // fall back to the matching homepage section so every link stays clickable.
 import React from 'react';
-import { TopBar, Header, Footer, StickyCTA } from './chrome.jsx';
+import { TopBar, Header, Footer } from './chrome.jsx';
 import { HomePage } from './home.jsx';
 import { ThankYouPage } from './thankyou.jsx';
 import { ServicePage } from './service.jsx';
@@ -115,7 +115,6 @@ function App() {
       <Header onNav={onNav} page={page} />
       {content}
       <Footer onNav={onNav} page={page} />
-      <StickyCTA onNav={onNav} />
       <CookieBanner onNav={onNav} />
     </div>
   );

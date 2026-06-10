@@ -277,9 +277,6 @@ select.lii-input { appearance: none; background-image: url("data:image/svg+xml,%
 .footer__bottom .glo a { display: inline; color: inherit; }
 .footer__bottom .glo a:hover { color: var(--lii-warm-orange); text-decoration: none; }
 
-/* ---------- Sticky mobile CTA ---------- */
-.sticky-cta { display: none; position: fixed; left: 0; right: 0; bottom: 0; z-index: 75; background: rgba(255,255,255,0.97); backdrop-filter: blur(10px); border-top: 1px solid var(--border-subtle); padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); box-shadow: 0 -6px 24px rgba(12,40,46,0.1); }
-.sticky-cta .lii-btn { width: 100%; }
 
 /* ---------- Sub-page hero (for service pages later) ---------- */
 .breadcrumb { font-family: var(--font-ui); font-size: 13px; color: var(--lii-grass-green); display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
@@ -359,7 +356,6 @@ select.lii-input { appearance: none; background-image: url("data:image/svg+xml,%
   .footer__grid { grid-template-columns: 1fr 1fr; }
   .nav__links { display: none; }
   .burger { display: grid; place-items: center; }
-  .sticky-cta { display: block; }
   .step:not(:last-child) .step__n::after { display: none; }
 }
 @media (max-width: 600px) {
