@@ -4,6 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <!-- Performance: warm up connections to third-party origins early, and load
+       webfonts via a <link> here (parallel) rather than a CSS @import (which
+       can only be discovered after the main stylesheet downloads). Same fonts,
+       same display=swap — no visual change. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Encode+Sans+SemiCondensed:wght@400;500;600;700;800&family=Encode+Sans+Semi+Expanded:wght@400;500;600;700&family=Encode+Sans:wght@400;500;600;700;800&display=swap">
+
   <!-- Favicon / app icons -->
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />

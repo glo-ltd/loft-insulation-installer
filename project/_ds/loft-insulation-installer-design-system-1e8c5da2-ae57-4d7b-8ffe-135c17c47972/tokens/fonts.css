@@ -3,7 +3,9 @@
    Brand typeface: Encode Sans (superfamily).
    Headings  → Encode Sans SemiCondensed, Bold (700)
    Body      → Encode Sans SemiExpanded, Medium (500)
-   Loaded from Google Fonts (exact family — no substitution).
-   ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+SemiCondensed:wght@400;500;600;700;800&family=Encode+Sans+Semi+Expanded:wght@400;500;600;700&family=Encode+Sans:wght@400;500;600;700;800&display=swap');
+   The Google Fonts stylesheet is loaded via a <link> in index.html
+   (with preconnect) rather than an @import here, so it is discovered
+   immediately and doesn't block on the main stylesheet downloading first.
+   Same exact families and display=swap — no visual change.
+   ============================================================ */
