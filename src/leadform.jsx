@@ -95,7 +95,7 @@ function Calculator({ onStartSaving }) {
         <div className="calc-bar" aria-hidden="true"><div className="calc-bar__fill" style={{ width: `${Math.max(8, pct)}%` }} /></div>
         <div className="calc-cta">
           <Button variant="primary" size="lg" block onClick={start} rightIcon={<Ic.Arrow size={18} />}>Start saving</Button>
-          <p className="micro"><Ic.CheckCircle size={16} /> Free, no-obligation survey to confirm your savings.</p>
+          <p className="micro"><Ic.CheckCircle size={16} /> Free phone consultation to confirm your savings.</p>
         </div>
       </div>
     </div>

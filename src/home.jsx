@@ -15,7 +15,7 @@ function Hero({ onNav }) {
           <h1>Eco-friendly loft insulation, installed by <span className="u">accredited local experts.</span></h1>
           <p className="hero__sub">We connect you with vetted, accredited installers who fit the right sustainable insulation for your home, giving you a warmer house, lower energy bills and a lighter footprint.</p>
           <div className="hero__trust">
-            <span><Ic.CheckCircle size={18} /> Free home survey</span>
+            <span><Ic.CheckCircle size={18} /> Free phone consultation</span>
             <span><Ic.Pound size={18} /> No-obligation quote</span>
             <span><Ic.ShieldCheck size={18} /> Accredited installer network</span>
           </div>

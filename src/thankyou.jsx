@@ -8,7 +8,7 @@ import { getLeadContext } from './leadContext.js';
 
 const NEXT_STEPS = [
   ["Phone", "They'll call you", "RJ Insulation will call you back shortly to understand your home and what you need, with no hard sell."],
-  ["Home", "Free home survey", "They arrange a free, no-obligation survey at a time that suits you, and recommend the right material."],
+  ["Home", "Free phone consultation", "They arrange a free phone consultation at a time that suits you, and recommend the right material."],
   ["CheckCircle", "A clear quote", "You receive a clear, no-pressure quote with a full breakdown, and no obligation to proceed."],
 ];
 
@@ -52,7 +52,7 @@ function ThankYouPage({ onNav }) {
           <div className="eyebrow-row" style={{ justifyContent: "center" }}><span className="lii-eyebrow" style={{ color: "var(--lii-grass-green)" }}>Enquiry received</span></div>
           <h1 style={{ color: "#fff", fontSize: "clamp(34px,4.4vw,54px)", margin: "12px 0 16px", lineHeight: 1.06 }}>Thank you, your enquiry is in.</h1>
           <p style={{ color: "var(--text-on-dark-muted)", fontSize: 19, lineHeight: 1.6, margin: "0 auto", maxWidth: "34em" }}>
-            One of our accredited installation partners, <b style={{ color: "#fff" }}>RJ Insulation</b>, will call you shortly to arrange your free, no-obligation survey.
+            One of our accredited installation partners, <b style={{ color: "#fff" }}>RJ Insulation</b>, will call you shortly to arrange your free phone consultation.
           </p>
           {ctx && (
             <div style={{ display: "inline-flex", gap: 10, alignItems: "center", marginTop: 26, background: "rgba(255,255,255,0.08)", border: "1px solid var(--border-on-dark)", borderRadius: "var(--radius-pill)", padding: "10px 20px", fontSize: 14.5 }}>

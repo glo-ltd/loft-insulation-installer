@@ -24,9 +24,9 @@ export const PAGE_META = {
     ogImage: "/og/home.png",
     ogImageAlt: "Eco-friendly loft insulation, installed by accredited local experts.",
     title: "Loft Insulation Installers | Free Survey & Quote, UK-Wide",
-    description: "Eco-friendly loft insulation fitted by accredited local installers. Get a free, no-obligation survey and see how much you could save on your bills.",
+    description: "Eco-friendly loft insulation fitted by accredited local installers. Get a free phone consultation and see how much you could save on your bills.",
     ogTitle: "Eco-Friendly Loft Insulation, Fitted by Local Experts",
-    ogDescription: "We match you with vetted, accredited local installers for a warmer home, lower bills and a lighter footprint. Free, no-obligation survey and quote.",
+    ogDescription: "We match you with vetted, accredited local installers for a warmer home, lower bills and a lighter footprint. Free phone consultation and quote.",
   },
   "loft-insulation": {
     path: "/loft-insulation/", robots: "index, follow",
@@ -35,7 +35,7 @@ export const PAGE_META = {
     title: "Loft Insulation Installers | Sustainable Materials",
     description: "Compare eco-friendly loft insulation - sheep wool, foil, recycled plastic & hemp - fitted by accredited local installers. Book your free survey.",
     ogTitle: "Sustainable Loft Insulation for Every Home",
-    ogDescription: "Sheep wool, foil, recycled plastic or hemp - fitted by accredited local installers. Find the right eco-friendly option with a free home survey.",
+    ogDescription: "Sheep wool, foil, recycled plastic or hemp - fitted by accredited local installers. Find the right eco-friendly option with a free phone consultation.",
   },
   "sheep-wool": {
     path: "/loft-insulation/sheep-wool/", robots: "index, follow",
@@ -44,7 +44,7 @@ export const PAGE_META = {
     title: "Sheep Wool Loft Insulation Installers | Free Survey",
     description: "Natural, breathable Thermafleece sheep wool loft insulation, ideal for period homes. Fitted by accredited installers. Get a free, no-obligation quote.",
     ogTitle: "Sheep Wool Loft Insulation - Natural & Breathable",
-    ogDescription: "Renewable Thermafleece sheep wool, perfect for older and period homes. Fitted cleanly by accredited installers. Book your free, no-obligation survey.",
+    ogDescription: "Renewable Thermafleece sheep wool, perfect for older and period homes. Fitted cleanly by accredited installers. Book your free phone consultation.",
   },
   "foil": {
     path: "/loft-insulation/foil/", robots: "index, follow",
@@ -60,7 +60,7 @@ export const PAGE_META = {
     ogImage: "/og/recycled-plastic.png",
     ogImageAlt: "Recycled plastic loft insulation, installed by accredited local experts.",
     title: "Recycled Plastic Loft Insulation | SupaSoft Installers",
-    description: "Soft, safe SupaSoft recycled plastic loft insulation made from recycled bottles, fitted by accredited installers. Book a free, no-obligation survey.",
+    description: "Soft, safe SupaSoft recycled plastic loft insulation made from recycled bottles, fitted by accredited installers. Book a free phone consultation.",
     ogTitle: "SupaSoft Recycled Plastic Loft Insulation",
     ogDescription: "Soft, safe insulation made from thousands of recycled bottles, easy to fit in modern homes. Accredited installers, free no-obligation survey.",
   },
@@ -121,9 +121,9 @@ export const PAGE_META = {
   "thank-you": {
     path: "/thank-you/", robots: "noindex, follow",
     title: "Thank You | Loft Insulation Installer",
-    description: "Thanks for your enquiry. An accredited installer will be in touch shortly to arrange your free, no-obligation survey.",
+    description: "Thanks for your enquiry. An accredited installer will be in touch shortly to arrange your free phone consultation.",
     ogTitle: "Thank You - We'll Be in Touch",
-    ogDescription: "Thanks for your enquiry. An accredited installer will call shortly to arrange your free, no-obligation survey.",
+    ogDescription: "Thanks for your enquiry. An accredited installer will call shortly to arrange your free phone consultation.",
   },
   "privacy-policy": {
     path: "/privacy-policy/", robots: "noindex, follow",

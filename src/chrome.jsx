@@ -48,7 +48,7 @@ function TopBar() {
   return (
     <div className="topbar">
       <div className="wrap topbar__in">
-        <span><Ic.CheckCircle size={15} /><span className="lbl">Free<span className="topbar-hide">, no-obligation</span> survey</span></span>
+        <span><Ic.CheckCircle size={15} /><span className="lbl">Free phone consultation</span></span>
         <span className="topbar-hide"><Ic.Pound size={15} /><span className="lbl">No-obligation quote</span></span>
         <span><Ic.Star size={15} fill="currentColor" /><span className="lbl">Rated excellent<span className="topbar-hide"> by homeowners</span></span></span>
         <span className="topbar-hide"><Ic.MapPin size={15} /><span className="lbl">UK-wide network</span></span>
@@ -139,7 +139,7 @@ function Header({ onNav, page }) {
   );
 }
 
-function CtaBand({ onNav, color = "orange", title = "Ready for a warmer, more efficient home?", text = "Tell us about your loft and we'll arrange a free, no-obligation survey at a time that suits you.", cta = "Get my free quote", target = "home", embed = false }) {
+function CtaBand({ onNav, color = "orange", title = "Ready for a warmer, more efficient home?", text = "Tell us about your loft and we'll arrange a free phone consultation at a time that suits you.", cta = "Get my free quote", target = "home", embed = false }) {
   const Ic = LIcons;
   const panel = (
     <WavePanel color={color} radius="var(--radius-xl)">
