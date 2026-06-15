@@ -33,7 +33,7 @@ function Hero({ onNav }) {
 }
 
 /* ---------- Trust bar ---------- */
-const ACCRED = ["PAS 2030", "Which? Trusted", "Elmhurst Energy", "AECB", "ECMK", "British Assessment Bureau", "QualityMark", "IWA"];
+const ACCRED = ["Which? Trusted Trader", "Trading Standards Approved", "NIA Accredited", "IWA Deposit & Guarantee Protection"];
 function TrustBar({ mist }) {
   const Ic = LIcons;
   return (
