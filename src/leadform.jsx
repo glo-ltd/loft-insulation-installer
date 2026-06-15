@@ -3,17 +3,17 @@ import { LIcons, Button } from './ui.jsx';
 import { getLeadContext, setLeadContext } from './leadContext.js';
 
 const INSULATION_TYPES = [
-  "Sheep Wool: natural, for period / pre-1920 homes",
-  "Foil (SuperFOIL): reflective, for 1920–1965 homes",
-  "Recycled Plastic (SupaSoft): for post-1965 homes",
-  "Hemp: natural, vegan, breathable",
-  "Loft Storage",
-  "Not sure: please recommend the right option",
+  "Sheep Wool - For Pre-1920 Homes",
+  "Foil - For 1920-1965 Homes",
+  "Recycled Plastic - For Post-1965 Homes",
+  "Hemp - Vegan",
+  "Complete Loft Storage Rooms",
+  "Not Sure",
 ];
 const AGES = [
-  ["Pre-1920", "Sheep Wool: natural, for period / pre-1920 homes"],
-  ["1920–1965", "Foil (SuperFOIL): reflective, for 1920–1965 homes"],
-  ["Post-1965", "Recycled Plastic (SupaSoft): for post-1965 homes"],
+  ["Pre-1920", "Sheep Wool - For Pre-1920 Homes"],
+  ["1920–1965", "Foil - For 1920-1965 Homes"],
+  ["Post-1965", "Recycled Plastic - For Post-1965 Homes"],
 ];
 
 const gbp = (n) => "£" + Math.round(n).toLocaleString("en-GB");
