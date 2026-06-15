@@ -77,7 +77,7 @@ function Calculator({ onStartSaving }) {
         <p className="calc-disclaimer">
           Estimate only. Savings assume a 25% reduction in heating costs from improved loft insulation; actual savings
           vary by property type, current insulation, energy prices and usage. We'll confirm your potential savings
-          during your free survey.
+          during your free phone consultation.
         </p>
       </div>
       <div className="calc-results">
@@ -175,7 +175,7 @@ function LeadForm({ onNav, compact = false, title, sub, presetType = "" }) {
       {ctx && (
         <div className="lf-context">
           <Ic.Trend size={18} />
-          <span>Based on a <b>{gbp(ctx.bill)}/mo</b> heating bill, you could save around <b>{gbp(ctx.yearly)}/year</b>. We'll confirm during your free survey.</span>
+          <span>Based on a <b>{gbp(ctx.bill)}/mo</b> heating bill, you could save around <b>{gbp(ctx.yearly)}/year</b>. We'll confirm during your free phone consultation.</span>
         </div>
       )}
 

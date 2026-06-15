@@ -18,11 +18,11 @@ const USPS = [
   ["Award", "Fully accredited", "Which? Trusted Trader, National Insulation Association, Trading Standards approved, with IWA deposit & guarantee protection."],
   ["Smile", "No hard sell", "Fast, clear quotes with no pressure, a theme that runs through their customer reviews."],
   ["Sparkle", "Clean & courteous", "Dust-sheeted, tidy and respectful of your home, hoovering up after every job."],
-  ["Pound", "Free, no-obligation", "A free survey and quote, with absolutely no obligation to proceed."],
+  ["Pound", "Free, no-obligation", "A free phone consultation and quote, with absolutely no obligation to proceed."],
 ];
 
 const RJ_REVIEWS = [
-  ["Joanna Janus", "Brilliant from start to finish: a thorough survey, a clear quote with no pressure, and a spotless install. The house is noticeably warmer already."],
+  ["Joanna Janus", "Brilliant from start to finish: a thorough consultation, a clear quote with no pressure, and a spotless install. The house is noticeably warmer already."],
   ["K Clarke", "Most professional, worked hard and did a brilliant job. They used lambs wool and Superfoil, and both look spectacular and our house is warmer. An excellent company."],
   ["Weston", "Genuinely no hard sell. Friendly, knowledgeable and tidy. We're delighted with the work and wouldn't hesitate to recommend RJ Insulation."],
 ];
@@ -57,7 +57,7 @@ function ThankYouPage({ onNav }) {
           {ctx && (
             <div style={{ display: "inline-flex", gap: 10, alignItems: "center", marginTop: 26, background: "rgba(255,255,255,0.08)", border: "1px solid var(--border-on-dark)", borderRadius: "var(--radius-pill)", padding: "10px 20px", fontSize: 14.5 }}>
               <Ic.Trend size={18} style={{ color: "var(--lii-grass-green)" }} />
-              <span>We've noted your estimated saving of around <b style={{ color: "#fff" }}>£{Math.round(ctx.yearly).toLocaleString("en-GB")}/year</b> for your survey.</span>
+              <span>We've noted your estimated saving of around <b style={{ color: "#fff" }}>£{Math.round(ctx.yearly).toLocaleString("en-GB")}/year</b> for your consultation.</span>
             </div>
           )}
         </div>

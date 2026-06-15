@@ -37,7 +37,7 @@ function ServiceHero({ d, onNav }) {
         </div>
         <div className="hero__media">
           <LeadForm onNav={onNav} compact presetType={d.presetType}
-            title="Get your free quote." sub="Most surveys booked within 48 hours. No obligation." />
+            title="Get your free quote." sub="Most consultations booked within 48 hours. No obligation." />
         </div>
       </div>
     </WavePanel>
@@ -119,7 +119,7 @@ function OtherOptions({ d, onNav }) {
     <section className="section">
       <div className="wrap">
         <SectionHead eyebrow="Not sure this is the one?" title="Explore your other options." marker
-          sub="Every home is different. Compare the alternatives, or let our free survey recommend the right fit." />
+          sub="Every home is different. Compare the alternatives, or let our free phone consultation recommend the right fit." />
         <div className={"svc-grid svc-grid--" + (d.related.length === 3 ? "3" : "4")}>
           {d.related.map((id) => {
             const s = SERVICE_INDEX[id];
@@ -255,16 +255,16 @@ function ServiceFAQ({ d }) {
 function ServiceForm({ d, onNav }) {
   const Ic = LIcons;
   const points = [
-    [Ic.Pound, "Free, no-obligation quote & home survey"],
+    [Ic.Pound, "Free, no-obligation quote & phone consultation"],
     [Ic.ShieldCheck, "Accredited, fully-insured local installers"],
     [Ic.Leaf, "Sustainable, eco-friendly materials"],
-    [Ic.Clock, "Most surveys booked within 48 hours"],
+    [Ic.Clock, "Most consultations booked within 48 hours"],
   ];
   return (
     <section className={"section" + (d.howItWorks ? "" : " section--mist")} id="quote">
       <div className="wrap">
-        <SectionHead eyebrow="Book a free survey" title={"Get a quote for " + d.name.toLowerCase() + "."} marker
-          sub={"Send us your details and an accredited local installer will call you back to arrange a free survey and confirm whether " + d.name.toLowerCase() + " is the right fit for your home."} />
+        <SectionHead eyebrow="Book a free phone consultation" title={"Get a quote for " + d.name.toLowerCase() + "."} marker
+          sub={"Send us your details and an accredited local installer will call you back to arrange a free phone consultation and confirm whether " + d.name.toLowerCase() + " is the right fit for your home."} />
         <div className="finalform">
           <LeadForm onNav={onNav} presetType={d.presetType} title="Request your free quote." sub="Takes under a minute. No obligation, ever." />
           <aside className="finalform__aside">
@@ -276,7 +276,7 @@ function ServiceForm({ d, onNav }) {
             </Card>
             <WavePanel color="true-teal" radius="var(--radius-lg)" style={{ padding: 30, color: "#fff" }}>
               <div className="lii-eyebrow" style={{ color: "var(--lii-grass-green)" }}>Prefer expert advice?</div>
-              <p style={{ margin: "12px 0 0", color: "rgba(255,255,255,0.92)", fontSize: 15, lineHeight: 1.6 }}>No problem. Tell us about your loft and your installer will recommend the best sustainable option for your home during your free survey.</p>
+              <p style={{ margin: "12px 0 0", color: "rgba(255,255,255,0.92)", fontSize: 15, lineHeight: 1.6 }}>No problem. Tell us about your loft and your installer will recommend the best sustainable option for your home during your free phone consultation.</p>
             </WavePanel>
           </aside>
         </div>
@@ -300,7 +300,7 @@ function ServicePage({ id, onNav }) {
       <MatBenefits d={d} />
       <BestSuited d={d} />
       <ServiceCalc onNav={nav} />
-      <Process sub={d.processSub} cta={<CtaBand embed onNav={nav} target={d.id} title={d.ctaTitle || "Ready for a warmer, more efficient home?"} text={d.ctaText || "Tell us about your loft and we'll arrange a free phone consultation at a time that suits you."} cta="Get my free quote" />} />
+      <Process sub={d.processSub} installNote={d.installNote} cta={<CtaBand embed onNav={nav} target={d.id} title={d.ctaTitle || "Ready for a warmer, more efficient home?"} text={d.ctaText || "Tell us about your loft and we'll arrange a free phone consultation at a time that suits you."} cta="Get my free quote" />} />
       <WhyPro />
       <OtherOptions d={d} onNav={nav} />
       <Reviews title={d.reviewsTitle} sub={d.reviewsSub} reviews={d.reviews} />

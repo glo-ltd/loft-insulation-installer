@@ -34,7 +34,7 @@ function HubHero({ d, onNav }) {
           </div>
         </div>
         <div className="hero__media">
-          <LeadForm onNav={onNav} compact presetType={d.silo === "loft-storage" ? "Loft Storage" : ""} title="Get your free quote." sub="Most surveys booked within 48 hours. No obligation." />
+          <LeadForm onNav={onNav} compact presetType={d.silo === "loft-storage" ? "Loft Storage" : ""} title="Get your free quote." sub="Most consultations booked within 48 hours. No obligation." />
         </div>
       </div>
     </WavePanel>
@@ -98,16 +98,16 @@ function HubFAQ({ d }) {
 function HubForm({ d, onNav }) {
   const Ic = LIcons;
   const points = [
-    [Ic.Pound, "Free, no-obligation quote & home survey"],
+    [Ic.Pound, "Free, no-obligation quote & phone consultation"],
     [Ic.ShieldCheck, "Accredited, fully-insured local installers"],
     [Ic.Leaf, "Sustainable, professional workmanship"],
-    [Ic.Clock, "Most surveys booked within 48 hours"],
+    [Ic.Clock, "Most consultations booked within 48 hours"],
   ];
   return (
     <section className="section section--mist" id="quote">
       <div className="wrap">
-        <SectionHead eyebrow="Book a free survey" title="Get your free, no-obligation quote." marker
-          sub="Send us your details and an accredited local installer will call you back to arrange a free survey at a time that suits you." />
+        <SectionHead eyebrow="Book a free phone consultation" title="Get your free, no-obligation quote." marker
+          sub="Send us your details and an accredited local installer will call you back to arrange a free phone consultation at a time that suits you." />
         <div className="finalform">
           <LeadForm onNav={onNav} presetType={d.silo === "loft-storage" ? "Loft Storage" : ""} title="Request your free quote." sub="Takes under a minute. No obligation, ever." />
           <aside className="finalform__aside">
@@ -119,7 +119,7 @@ function HubForm({ d, onNav }) {
             </Card>
             <WavePanel color="true-teal" radius="var(--radius-lg)" style={{ padding: 30, color: "#fff" }}>
               <div className="lii-eyebrow" style={{ color: "var(--lii-grass-green)" }}>Prefer expert advice?</div>
-              <p style={{ margin: "12px 0 0", color: "rgba(255,255,255,0.92)", fontSize: 15, lineHeight: 1.6 }}>No problem. Tell us about your loft and your installer will recommend the right option for your home during your free survey.</p>
+              <p style={{ margin: "12px 0 0", color: "rgba(255,255,255,0.92)", fontSize: 15, lineHeight: 1.6 }}>No problem. Tell us about your loft and your installer will recommend the right option for your home during your free phone consultation.</p>
             </WavePanel>
           </aside>
         </div>
@@ -139,7 +139,7 @@ function HubPage({ id, onNav }) {
       <TrustBar />
       <HubServices d={d} onNav={nav} />
       <WhyPro />
-      <Process cta={<CtaBand embed onNav={nav} target={d.id} title={d.ctaTitle} text={d.ctaText} cta="Get my free quote" />} />
+      <Process installNote={d.silo === "loft-storage" ? "" : undefined} cta={<CtaBand embed onNav={nav} target={d.id} title={d.ctaTitle} text={d.ctaText} cta="Get my free quote" />} />
       <Reviews title={d.reviewsTitle} sub={d.reviewsSub} reviews={d.reviews} />
       <HubFAQ d={d} />
       <HubForm d={d} onNav={nav} />

@@ -11,10 +11,10 @@ const PRIVACY = {
   id: "privacy-policy",
   title: "Privacy Policy.",
   updated: "Last updated: 10 June 2026",
-  intro: "Loft Insulation Installer operates loftinsulationinstaller.co.uk. This Privacy Policy explains how we collect, use, store and protect your personal information when you visit our website, submit an enquiry, request a quote, book a survey or use any of the forms or features on our website. For the purposes of this policy, \u201cwe\u201d, \u201cus\u201d and \u201cour\u201d refers to Loft Insulation Installer, and \u201cyou\u201d and \u201cyour\u201d refers to visitors, customers, prospective customers and any person who uses our website or contacts us through it. We are committed to protecting your privacy and handling your personal information fairly, lawfully and transparently.",
+  intro: "Loft Insulation Installer operates loftinsulationinstaller.co.uk. This Privacy Policy explains how we collect, use, store and protect your personal information when you visit our website, submit an enquiry, request a quote, book a consultation or use any of the forms or features on our website. For the purposes of this policy, \u201cwe\u201d, \u201cus\u201d and \u201cour\u201d refers to Loft Insulation Installer, and \u201cyou\u201d and \u201cyour\u201d refers to visitors, customers, prospective customers and any person who uses our website or contacts us through it. We are committed to protecting your privacy and handling your personal information fairly, lawfully and transparently.",
   sections: [
     { h: "1. Who we are", body: [
-      "Loft Insulation Installer is a UK website that helps homeowners and property owners enquire about loft insulation and related loft services. Our website may allow you to request information, submit an enquiry, ask for a quote, request a survey or contact us about services including:",
+      "Loft Insulation Installer is a UK website that helps homeowners and property owners enquire about loft insulation and related loft services. Our website may allow you to request information, submit an enquiry, ask for a quote, request a consultation or contact us about services including:",
       ["Loft insulation", "Sheep wool loft insulation", "Foil loft insulation", "Recycled plastic loft insulation", "Hemp loft insulation", "Insulated loft space", "Loft boarding", "Loft ladders", "Loft hatches", "Loft storage rooms", "Loft storage"],
       "Where appropriate, we may connect you with a relevant installer or service provider who can respond to your enquiry.",
     ]},
@@ -25,12 +25,12 @@ const PRIVACY = {
     ]},
     { h: "3. How we collect your information", body: [
       "We may collect your information in the following ways:",
-      ["When you complete a contact or enquiry form", "When you request a quote", "When you request a survey", "When you interact with our website", "When you use website features such as embedded forms, booking tools or contact options", "When cookies or similar technologies collect technical website data"],
+      ["When you complete a contact or enquiry form", "When you request a quote", "When you request a consultation", "When you interact with our website", "When you use website features such as embedded forms, booking tools or contact options", "When cookies or similar technologies collect technical website data"],
       "Some information is provided directly by you. Other information, such as website usage data, may be collected automatically when you browse our website.",
     ]},
     { h: "4. How we use your information", body: [
       "We may use your personal information to:",
-      ["Respond to your enquiry", "Contact you about your request", "Provide information about the service you asked about", "Arrange a quote, survey or follow up", "Pass your enquiry to a relevant installer or service provider where needed", "Improve our website and customer experience", "Understand how visitors use our website", "Monitor website performance and security", "Prevent spam, misuse or fraudulent activity", "Keep internal records", "Comply with legal, accounting or regulatory responsibilities"],
+      ["Respond to your enquiry", "Contact you about your request", "Provide information about the service you asked about", "Arrange a quote, consultation or follow up", "Pass your enquiry to a relevant installer or service provider where needed", "Improve our website and customer experience", "Understand how visitors use our website", "Monitor website performance and security", "Prevent spam, misuse or fraudulent activity", "Keep internal records", "Comply with legal, accounting or regulatory responsibilities"],
       "We do not sell your personal information. We do not use your personal information for purposes that are unrelated to your enquiry or your use of our website.",
     ]},
     { h: "5. Our lawful bases for using your information", body: [
@@ -56,7 +56,7 @@ const PRIVACY = {
     ]},
     { h: "7. Marketing communications", body: [
       "We may contact you about your enquiry or request using the contact details you provide. We will only send direct marketing communications where we have a lawful basis to do so, and where consent is required, we will ask for it.",
-      "You can ask us to stop sending marketing communications at any time by contacting us or using any unsubscribe option provided. Even if you opt out of marketing, we may still contact you about an active enquiry, quote, survey or service related matter.",
+      "You can ask us to stop sending marketing communications at any time by contacting us or using any unsubscribe option provided. Even if you opt out of marketing, we may still contact you about an active enquiry, quote, consultation or service related matter.",
     ]},
     { h: "8. Cookies and similar technologies", body: [
       "Our website may use cookies and similar technologies. Cookies are small files placed on your device when you visit a website. They help the website function, improve user experience, understand website performance and support security. We may use:",
@@ -71,7 +71,7 @@ const PRIVACY = {
     ]},
     { h: "11. How long we keep your information", body: [
       "We only keep your personal information for as long as necessary for the purpose it was collected. How long we keep information depends on the type of data and why it was collected. As a general guide:",
-      ["Enquiry information may be kept for as long as needed to respond to your request and manage follow up", "Quote or survey information may be kept for a reasonable period for customer service and record keeping", "Marketing preferences may be kept until you unsubscribe or ask us to delete them", "Website analytics data may be kept for reporting and performance analysis", "Technical security logs may be kept for a limited period to protect the website"],
+      ["Enquiry information may be kept for as long as needed to respond to your request and manage follow up", "Quote or consultation information may be kept for a reasonable period for customer service and record keeping", "Marketing preferences may be kept until you unsubscribe or ask us to delete them", "Website analytics data may be kept for reporting and performance analysis", "Technical security logs may be kept for a limited period to protect the website"],
       "We may keep certain information for longer where needed for legal, accounting, dispute resolution or business record purposes. When information is no longer needed, we will delete it, anonymise it or securely archive it.",
     ]},
     { h: "12. How we protect your information", body: [
