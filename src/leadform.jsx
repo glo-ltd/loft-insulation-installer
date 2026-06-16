@@ -102,7 +102,7 @@ function Calculator({ onStartSaving }) {
   );
 }
 
-function LeadForm({ onNav, compact = false, title, sub, presetType = "" }) {
+function LeadForm({ onNav, compact = false, title, sub, presetType = "", ageHelper = false }) {
   const Ic = LIcons;
   const [type, setType] = React.useState(presetType);
   const [ctx, setCtx] = React.useState(getLeadContext);
@@ -196,19 +196,21 @@ function LeadForm({ onNav, compact = false, title, sub, presetType = "" }) {
         </select>
       </div>
 
+      {ageHelper && (
+        <details className="lf-helper">
+          <summary><Ic.Home size={16} /> Not sure which you need? Pick your home's age <span className="pm"><Ic.Plus size={14} /></span></summary>
+          <div className="lf-helper__ages">
+            {AGES.map(([yr, mapped]) => (
+              <div key={yr} className={`lf-age ${type === mapped ? "sel" : ""}`} onClick={() => setType(mapped)}>
+                <div className="yr">{yr}</div>
+                <div className="rec">{mapped.split(" - ")[0]}</div>
+              </div>
+            ))}
+          </div>
+        </details>
+      )}
       {!compact && (
         <>
-          <details className="lf-helper">
-            <summary><Ic.Home size={16} /> Not sure which you need? Pick your home's age <span className="pm"><Ic.Plus size={14} /></span></summary>
-            <div className="lf-helper__ages">
-              {AGES.map(([yr, mapped]) => (
-                <div key={yr} className={`lf-age ${type === mapped ? "sel" : ""}`} onClick={() => setType(mapped)}>
-                  <div className="yr">{yr}</div>
-                  <div className="rec">{mapped.split(":")[0].split(" (")[0]}</div>
-                </div>
-              ))}
-            </div>
-          </details>
           <div className="lf-field"><label>Your message (optional)</label><input className="lii-input" placeholder="Tell us about your loft, current insulation, any questions…" value={message} onChange={(e) => setMessage(e.target.value)} /></div>
         </>
       )}

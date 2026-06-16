@@ -25,7 +25,7 @@ function Hero({ onNav }) {
           </div>
         </div>
         <div className="hero__media">
-          <LeadForm onNav={onNav} compact title="Get your free quote." sub="Most consultations booked within 48 hours. No obligation." />
+          <LeadForm onNav={onNav} compact ageHelper title="Get your free quote." sub="Most consultations booked within 48 hours. No obligation." />
         </div>
       </div>
     </WavePanel>
@@ -384,7 +384,7 @@ function FinalForm({ onNav }) {
         <SectionHead eyebrow="Book a free phone consultation" title="Get your free, no-obligation quote." marker
           sub="Send us your details and an accredited local installer will call you back to arrange a free phone consultation, with advice on the right sustainable insulation for your home." />
         <div className="finalform">
-          <LeadForm onNav={onNav} title="Request your free quote." sub="Takes under a minute. No obligation, ever." />
+          <LeadForm onNav={onNav} ageHelper title="Request your free quote." sub="Takes under a minute. No obligation, ever." />
           <aside className="finalform__aside">
             <Card raised style={{ padding: 30 }}>
               <h3 style={{ fontFamily: "var(--font-heading)", color: "var(--text-heading)", fontSize: 21, margin: "0 0 18px" }}>What you get</h3>
