@@ -209,11 +209,7 @@ function LeadForm({ onNav, compact = false, title, sub, presetType = "", ageHelp
           </div>
         </details>
       )}
-      {!compact && (
-        <>
-          <div className="lf-field"><label>Your message (optional)</label><input className="lii-input" placeholder="Tell us about your loft, current insulation, any questions…" value={message} onChange={(e) => setMessage(e.target.value)} /></div>
-        </>
-      )}
+      <div className="lf-field"><label>Your message <span className="req">*</span></label><input className="lii-input" placeholder="Tell us about your loft, current insulation, any questions…" required value={message} onChange={(e) => setMessage(e.target.value)} /></div>
 
       <Button variant="primary" size="lg" block type="submit" rightIcon={<Ic.Arrow size={18} />} style={submitting ? { opacity: 0.7 } : {}}>
         {submitting ? "Sending…" : "Get my free quote"}
