@@ -10,6 +10,14 @@ const INSULATION_TYPES = [
   "Complete Loft Storage Rooms",
   "Not Sure",
 ];
+// Service dropdown shown on Loft Storage pages only.
+const STORAGE_TYPES = [
+  "Loft Boarding",
+  "Loft Ladders",
+  "Loft Hatch",
+  "Complete Loft Storage Rooms",
+  "Not Sure",
+];
 const AGES = [
   ["Pre-1920", "Sheep Wool - For Pre-1920 Homes"],
   ["1920–1965", "Foil - For 1920-1965 Homes"],
@@ -102,7 +110,8 @@ function Calculator({ onStartSaving }) {
   );
 }
 
-function LeadForm({ onNav, compact = false, title, sub, presetType = "", ageHelper = false }) {
+function LeadForm({ onNav, compact = false, title, sub, presetType = "", ageHelper = false, storage = false }) {
+  const serviceOptions = storage ? STORAGE_TYPES : INSULATION_TYPES;
   const Ic = LIcons;
   const [type, setType] = React.useState(presetType);
   const [ctx, setCtx] = React.useState(getLeadContext);
@@ -192,7 +201,7 @@ function LeadForm({ onNav, compact = false, title, sub, presetType = "", ageHelp
         <label>What are you interested in? <span className="req">*</span></label>
         <select aria-label="What are you interested in?" className="lii-input" value={type} onChange={(e) => { setType(e.target.value); }} required>
           <option value="" disabled>Choose a service…</option>
-          {INSULATION_TYPES.map((t) => <option key={t} value={t}>{t}</option>)}
+          {serviceOptions.map((t) => <option key={t} value={t}>{t}</option>)}
         </select>
       </div>
 
