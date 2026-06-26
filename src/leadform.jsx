@@ -218,7 +218,7 @@ function LeadForm({ onNav, compact = false, title, sub, presetType = "", ageHelp
           </div>
         </details>
       )}
-      <div className="lf-field"><label>Your message <span className="req">*</span></label><input className="lii-input" placeholder="Tell us about your loft, current insulation, any questions…" required value={message} onChange={(e) => setMessage(e.target.value)} /></div>
+      <div className="lf-field"><label>Your message <span className="req">*</span></label><input className="lii-input" placeholder="Tell us about your loft and what you'd like done (no need to repeat your phone number)" required value={message} onChange={(e) => { const v = e.target.value; setMessage(v); e.target.setCustomValidity(v.trim() && !/[a-zA-Z]{2,}/.test(v) ? "Please tell us a little about your project — there's no need to add your phone number here." : ""); }} /></div>
 
       <Button variant="primary" size="lg" block type="submit" rightIcon={<Ic.Arrow size={18} />} style={submitting ? { opacity: 0.7 } : {}}>
         {submitting ? "Sending…" : "Get my free quote"}
