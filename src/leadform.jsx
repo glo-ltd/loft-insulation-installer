@@ -179,11 +179,12 @@ function LeadForm({ onNav, compact = false, title, sub, presetType = "", ageHelp
 
   return (
     <form className={`leadform ${compact ? "leadform--inline" : ""}`} onSubmit={submit}>
-      {/* Honeypot: hidden from people (off-screen, not focusable, not announced);
-          bots that auto-fill every field trip it and are dropped on submit. */}
+      {/* Honeypot: hidden from people (off-screen, not focusable, not announced).
+          Uses a neutral name/label that browser autofill won't recognise, so it
+          only traps bots that bulk-fill every field — never real users. */}
       <div aria-hidden="true" style={{ position: "absolute", left: "-9999px", width: 1, height: 1, overflow: "hidden" }}>
-        <label>Company website (leave blank)
-          <input type="text" name="company_website" tabIndex={-1} autoComplete="off"
+        <label>Leave this field empty
+          <input type="text" name="lii_hp" tabIndex={-1} autoComplete="off"
             value={hp} onChange={(e) => setHp(e.target.value)} />
         </label>
       </div>
