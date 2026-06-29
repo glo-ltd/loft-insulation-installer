@@ -121,6 +121,7 @@ function LeadForm({ onNav, compact = false, title, sub, presetType = "", ageHelp
   const [postcode, setPostcode] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [message, setMessage] = React.useState("");
+  const [hp, setHp] = React.useState(""); // honeypot — must stay empty for real users
   const [submitting, setSubmitting] = React.useState(false);
 
   React.useEffect(() => { setType(presetType); }, [presetType]);
@@ -134,6 +135,10 @@ function LeadForm({ onNav, compact = false, title, sub, presetType = "", ageHelp
 
   const submit = async (e) => {
     e.preventDefault();
+    // Honeypot: real users never see/fill this field. If it has a value the
+    // submission is almost certainly a bot — silently drop it (no Zapier POST,
+    // no GA4 event) but still show the thank-you page so the bot sees success.
+    if (hp) { onNav("thank-you"); return; }
     setSubmitting(true);
     const webhookUrl = import.meta.env.VITE_ZAPIER_WEBHOOK_URL;
     if (webhookUrl) {
@@ -174,6 +179,14 @@ function LeadForm({ onNav, compact = false, title, sub, presetType = "", ageHelp
 
   return (
     <form className={`leadform ${compact ? "leadform--inline" : ""}`} onSubmit={submit}>
+      {/* Honeypot: hidden from people (off-screen, not focusable, not announced);
+          bots that auto-fill every field trip it and are dropped on submit. */}
+      <div aria-hidden="true" style={{ position: "absolute", left: "-9999px", width: 1, height: 1, overflow: "hidden" }}>
+        <label>Company website (leave blank)
+          <input type="text" name="company_website" tabIndex={-1} autoComplete="off"
+            value={hp} onChange={(e) => setHp(e.target.value)} />
+        </label>
+      </div>
       {(title || sub) && (
         <div className="leadform__head">
           {title && <h2>{title}</h2>}
