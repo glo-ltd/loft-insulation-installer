@@ -163,9 +163,25 @@ function LeadForm({ onNav, compact = false, title, sub, presetType = "", ageHelp
     } else if (import.meta.env.DEV) {
       console.warn("VITE_ZAPIER_WEBHOOK_URL is not set — the form did not send data to Zapier.");
     }
-    // Fire a GA4 conversion via GTM's dataLayer. No personal data is sent
-    // (no name/email/phone) — only non-PII context, per GA4 policy.
     window.dataLayer = window.dataLayer || [];
+    // Customer data for Meta Pixel ADVANCED MATCHING — read only by the Meta
+    // Pixel "Lead" tag in GTM, NOT mapped into GA4 (GA4 stays PII-free). Plain
+    // values; the Meta pixel SHA-256-hashes them itself. Pushed before the
+    // event so it's in the dataLayer model when the Lead tag fires. The Meta
+    // tag is consent-gated in GTM, so nothing is sent to Meta until consent.
+    const phoneDigits = phone.replace(/\D/g, "");
+    window.dataLayer.push({
+      customer: {
+        em: email.trim().toLowerCase(),
+        ph: phoneDigits.startsWith("0") ? "44" + phoneDigits.slice(1) : phoneDigits,
+        fn: firstName.trim().toLowerCase(),
+        ln: lastName.trim().toLowerCase(),
+        zp: postcode.replace(/\s+/g, "").toLowerCase(),
+        country: "gb",
+      },
+    });
+    // Fire a GA4 conversion via GTM's dataLayer. No personal data here
+    // (no name/email/phone) — only non-PII context, per GA4 policy.
     window.dataLayer.push({
       event: "generate_lead",
       form_name: "lead_form",
