@@ -163,32 +163,39 @@ function LeadForm({ onNav, compact = false, title, sub, presetType = "", ageHelp
     } else if (import.meta.env.DEV) {
       console.warn("VITE_ZAPIER_WEBHOOK_URL is not set — the form did not send data to Zapier.");
     }
-    window.dataLayer = window.dataLayer || [];
-    // Customer data for Meta Pixel ADVANCED MATCHING — read only by the Meta
-    // Pixel "Lead" tag in GTM, NOT mapped into GA4 (GA4 stays PII-free). Plain
-    // values; the Meta pixel SHA-256-hashes them itself. Pushed before the
-    // event so it's in the dataLayer model when the Lead tag fires. The Meta
-    // tag is consent-gated in GTM, so nothing is sent to Meta until consent.
-    const phoneDigits = phone.replace(/\D/g, "");
-    window.dataLayer.push({
-      customer: {
-        em: email.trim().toLowerCase(),
-        ph: phoneDigits.startsWith("0") ? "44" + phoneDigits.slice(1) : phoneDigits,
-        fn: firstName.trim().toLowerCase(),
-        ln: lastName.trim().toLowerCase(),
-        zp: postcode.replace(/\s+/g, "").toLowerCase(),
-        country: "gb",
-      },
-    });
-    // Fire a GA4 conversion via GTM's dataLayer. No personal data here
-    // (no name/email/phone) — only non-PII context, per GA4 policy.
-    window.dataLayer.push({
-      event: "generate_lead",
-      form_name: "lead_form",
-      service_interest: type || "unspecified",
-      estimated_monthly_bill: ctx?.bill,
-      estimated_yearly_saving: ctx?.yearly,
-    });
+    // Stash the lead data so the Thank You page fires a single generate_lead
+    // conversion event exactly once (see thankyou.jsx). Bots hit the honeypot
+    // return above, so they never stash and never fire the conversion.
+    try {
+      const digits = phone.replace(/\D/g, "");
+      // UK national digits (e.g. 07… → 447…), used for Meta; E.164 adds "+".
+      const natl = digits.startsWith("0") ? "44" + digits.slice(1)
+                 : digits.startsWith("44") ? digits
+                 : digits ? "44" + digits : "";
+      // Google Enhanced Conversions user_data (raw; GTM hashes). Omit empties.
+      const address = { country: "GB" };
+      if (firstName.trim()) address.first_name = firstName.trim();
+      if (lastName.trim()) address.last_name = lastName.trim();
+      if (postcode.trim()) address.postal_code = postcode.trim();
+      const userData = { address };
+      if (email.trim()) userData.email = email.trim().toLowerCase();
+      if (natl) userData.phone_number = "+" + natl;
+      sessionStorage.setItem("lii_lead", JSON.stringify({
+        service_interest: type || "unspecified",
+        estimated_monthly_bill: ctx?.bill ?? null,
+        estimated_yearly_saving: ctx?.yearly ?? null,
+        user_data: userData,
+        // Meta Pixel advanced-matching shape (plain; pixel hashes).
+        customer: {
+          em: email.trim().toLowerCase(),
+          ph: natl,
+          fn: firstName.trim().toLowerCase(),
+          ln: lastName.trim().toLowerCase(),
+          zp: postcode.replace(/\s+/g, "").toLowerCase(),
+          country: "gb",
+        },
+      }));
+    } catch (_) {}
     setLeadContext(ctx);
     onNav("thank-you");
   };
