@@ -125,6 +125,13 @@ export const PAGE_META = {
     ogTitle: "Thank You - We'll Be in Touch",
     ogDescription: "Thanks for your enquiry. An accredited installer will call shortly to arrange your free phone consultation.",
   },
+  "thank-you-loft-storage": {
+    path: "/thank-you-loft-storage/", robots: "noindex, follow",
+    title: "Thank You | Loft Storage Room Enquiry",
+    description: "Thanks for your loft storage room enquiry. RJ Insulation will call you shortly — download the brochure or book a callback.",
+    ogTitle: "Thank You - We'll Be in Touch",
+    ogDescription: "Thanks for your loft storage room enquiry. An accredited installer will call shortly to talk it through.",
+  },
   "privacy-policy": {
     path: "/privacy-policy/", robots: "noindex, follow",
     title: "Privacy Policy | Loft Insulation Installer",

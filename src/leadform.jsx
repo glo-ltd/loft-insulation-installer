@@ -199,7 +199,12 @@ function LeadForm({ onNav, compact = false, title, sub, presetType = "", ageHelp
       }));
     } catch (_) {}
     setLeadContext(ctx);
-    onNav("thank-you");
+    // Loft-storage enquiries get the dedicated thank-you page: either the form
+    // is on a /loft-storage/ page, or the chosen service mentions "loft".
+    const storageLead =
+      window.location.pathname.toLowerCase().includes("loft-storage") ||
+      (type || "").toLowerCase().includes("loft");
+    onNav(storageLead ? "thank-you-loft-storage" : "thank-you");
   };
 
   return (

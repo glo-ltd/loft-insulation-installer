@@ -5,6 +5,7 @@ import React from 'react';
 import { LIcons, Logo, Button, Card, Badge, WavePanel, SectionHead, Stars, useReveal } from './ui.jsx';
 import { Funding } from './home.jsx';
 import { getLeadContext } from './leadContext.js';
+import { fireLeadConversionOnce } from './leadConversion.js';
 
 const NEXT_STEPS = [
   ["Phone", "They'll call you", "RJ Insulation will call you back shortly to understand your home and what you need, with no hard sell."],
@@ -42,28 +43,8 @@ function ThankYouPage({ onNav }) {
   useReveal();
   const ctx = getLeadContext();
 
-  // Fire the single generate_lead conversion once, using the data stashed on
-  // submit. Clearing the store first guarantees it fires exactly once per
-  // submission (and never on a direct/refresh visit with no stored lead).
-  React.useEffect(() => {
-    let payload = null;
-    try { payload = JSON.parse(sessionStorage.getItem("lii_lead") || "null"); } catch (_) {}
-    if (!payload) return;
-    try { sessionStorage.removeItem("lii_lead"); } catch (_) {}
-    window.dataLayer = window.dataLayer || [];
-    // Meta advanced-matching data (separate push, read only by the Meta tag).
-    if (payload.customer) window.dataLayer.push({ customer: payload.customer });
-    // Single conversion event: GA4 non-PII params + Google Enhanced
-    // Conversions user_data (raw; GTM hashes SHA-256 before sending).
-    window.dataLayer.push({
-      event: "generate_lead",
-      form_name: "lead_form",
-      service_interest: payload.service_interest,
-      estimated_monthly_bill: payload.estimated_monthly_bill,
-      estimated_yearly_saving: payload.estimated_yearly_saving,
-      user_data: payload.user_data,
-    });
-  }, []);
+  // Fire the single generate_lead conversion once (data stashed on submit).
+  React.useEffect(() => { fireLeadConversionOnce(); }, []);
 
   return (
     <div>

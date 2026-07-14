@@ -5,6 +5,7 @@ import React from 'react';
 import { TopBar, Header, Footer } from './chrome.jsx';
 import { HomePage } from './home.jsx';
 import { ThankYouPage } from './thankyou.jsx';
+import { ThankYouStorageRoomPage } from './thankyouStorage.jsx';
 import { ServicePage } from './service.jsx';
 import { HubPage } from './hub.jsx';
 import { LegalPage, LEGAL_PAGES as LEGAL_PAGES_LIST } from './legal.jsx';
@@ -78,9 +79,9 @@ function App() {
       else scrollToId(dest);
       return;
     }
-    if (target === "thank-you") {
+    if (target === "thank-you" || target === "thank-you-loft-storage") {
       window.dispatchEvent(new Event("lii-context"));
-      setPage("thank-you");
+      setPage(target);
       window.scrollTo({ top: 0, behavior: "auto" });
       return;
     }
@@ -104,6 +105,7 @@ function App() {
 
   let content;
   if (page === "thank-you") content = <ThankYouPage onNav={onNav} />;
+  else if (page === "thank-you-loft-storage") content = <ThankYouStorageRoomPage onNav={onNav} />;
   else if (LEGAL_PAGES.includes(page)) content = <LegalPage key={page} id={page} onNav={onNav} />;
   else if (HUB_PAGES.includes(page)) content = <HubPage key={page} id={page} onNav={onNav} />;
   else if (SERVICE_PAGES.includes(page)) content = <ServicePage key={page} id={page} onNav={onNav} />;
