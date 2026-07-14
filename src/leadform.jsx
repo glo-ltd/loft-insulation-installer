@@ -152,6 +152,8 @@ function LeadForm({ onNav, compact = false, title, sub, presetType = "", ageHelp
         message,
         estimatedMonthlyBill: ctx?.bill ?? "",
         estimatedYearlySaving: ctx?.yearly ?? "",
+        pageUrl: window.location.href,        // e.g. …/loft-storage/loft-boarding/
+        pagePath: window.location.pathname,   // e.g. /loft-storage/loft-boarding/
       });
       try {
         await fetch(webhookUrl, {
