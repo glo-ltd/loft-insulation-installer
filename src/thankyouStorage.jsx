@@ -36,7 +36,7 @@ const SR_REVIEWS = [
   ["Weston", "Genuinely no hard sell. Friendly, knowledgeable and tidy. We're delighted with the work and wouldn't hesitate to recommend RJ Insulation."],
 ];
 
-const BROCHURE_URL = "https://rjinsulation.co.uk/wp-content/uploads/2026/07/RJ-Loft-Storage-Rooms-Brochure.pdf";
+const BROCHURE_URL = "https://eu1.hubs.ly/H0wY8lR0";
 const CALLBACK_URL = "https://meetings-eu1.hubspot.com/ross-spence";
 
 function ThankYouStorageRoomPage({ onNav }) {
