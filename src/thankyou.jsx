@@ -1,63 +1,66 @@
-// Thank-you page, shown after a form submission. Introduces the matched
-// accredited installer (RJ Insulation) and sells their USPs. Form-only model:
-// no phone/email, RJ will call the user back. noindex in production.
+// Thank-you page for loft insulation enquiries (the standard thank-you).
+// Introduces RJ Insulation, links their loft insulation brochure, states the
+// sustainable-insulation USPs + why RJ, and walks the updated 4-step process.
+// Form-only model: no phone/email; RJ calls the user back. noindex in production.
 import React from 'react';
-import { LIcons, Logo, Button, Card, Badge, WavePanel, SectionHead, Stars, useReveal } from './ui.jsx';
+import { LIcons, Button, Card, WavePanel, SectionHead, Stars, useReveal } from './ui.jsx';
 import { Funding } from './home.jsx';
 import { getLeadContext } from './leadContext.js';
 import { fireLeadConversionOnce } from './leadConversion.js';
 
-const NEXT_STEPS = [
-  ["Phone", "They'll call you", "RJ Insulation will call you back shortly to understand your home and what you need, with no hard sell."],
-  ["Home", "Free phone consultation", "They arrange a free phone consultation at a time that suits you, and recommend the right material."],
-  ["CheckCircle", "A clear quote", "You receive a clear, no-pressure quote with a full breakdown, and no obligation to proceed."],
+const INS_BROCHURE_URL = "https://eu1.hubs.ly/H0wYjhv0";
+
+const INS_PROCESS = [
+  ["They'll call you back", "RJ Insulation's friendly team will call to talk through your home, your goals and the right sustainable material, with no pressure."],
+  ["Free phone consultation & quote", "They'll talk through your loft over the phone, confirm the ideal material and depth for your home's age, and give you a clear, detailed, no-obligation quote. No hard sell."],
+  ["Installation", "Accredited installers fit your insulation cleanly and tidily: dust sheets down, mess hoovered up, home respected."],
+  ["Lifetime guarantee & aftercare", "Your insulation is covered by a lifetime, IWA-backed guarantee against the building, and they're there if you ever need them."],
 ];
 
-const USPS = [
-  ["ShieldCheck", "Lifetime guarantee", "Insulation guaranteed for the lifetime of the building, insurance-backed by the IWA."],
-  ["Leaf", "Sustainable materials", "Sheep's Wool, Hemp, SuperFOIL and SupaSoft recycled-plastic: biodegradable, low-VOC options, not fibreglass-only work."],
-  ["Award", "Fully accredited", "Which? Trusted Trader, National Insulation Association, Trading Standards approved, with IWA deposit & guarantee protection."],
-  ["Smile", "No hard sell", "Fast, clear quotes with no pressure, a theme that runs through their customer reviews."],
-  ["Sparkle", "Clean & courteous", "Dust-sheeted, tidy and respectful of your home, hoovering up after every job."],
-  ["Pound", "Free, no-obligation", "A free phone consultation and quote, with absolutely no obligation to proceed."],
+const INS_BENEFITS = [
+  ["Pound", "Cut your energy bills", "By keeping heat inside, insulation reduces how hard your heating works, saving you up to £315 a year on energy bills."],
+  ["Thermometer", "A warmer home in winter", "No more overworking the heating to stay comfortable. A well-insulated loft holds warmth where you need it."],
+  ["Cloud", "A cooler home in summer", "The right amount of insulation ventilates the roof space and keeps your home cooler when it's hot outside."],
+  ["Droplet", "Less mould & condensation", "Breathable materials help regulate humidity, limiting the condensation that leads to mould."],
+  ["Leaf", "A smaller carbon footprint", "Less wasted energy means fewer carbon emissions: a real, lasting reduction, year after year."],
+  ["Trend", "Adds value to your home", "A fully, properly insulated home is more efficient and more appealing to buyers, and can lift your property's value."],
+];
+
+const INS_WHY_RJ = [
+  "Four sustainable materials, never fibreglass-only",
+  "Matched to your home's age & condition",
+  "Which? Trusted Trader & Trading Standards Approved",
+  "NIA member, IWA deposit & guarantee protection",
+  "Clean, fast & mess-free: no hazardous airborne fibres",
+  "Nationwide coverage across the UK",
+  "Consistent 5-star customer reviews",
+  "Lifetime guarantee against the building",
 ];
 
 const RJ_REVIEWS = [
-  ["Joanna Janus", "Brilliant from start to finish: a thorough consultation, a clear quote with no pressure, and a spotless install. The house is noticeably warmer already."],
+  ["Joanna Janus", "Brilliant from start to finish: a thorough survey, a clear quote with no pressure, and a spotless install. The house is noticeably warmer already."],
   ["K Clarke", "Most professional, worked hard and did a brilliant job. They used lambs wool and Superfoil, and both look spectacular and our house is warmer. An excellent company."],
   ["Weston", "Genuinely no hard sell. Friendly, knowledgeable and tidy. We're delighted with the work and wouldn't hesitate to recommend RJ Insulation."],
 ];
-
-function RJLogo() {
-  // Simple, on-brand wordmark placeholder for the partner brand.
-  return (
-    <span style={{ display: "inline-flex", alignItems: "center", gap: 12 }}>
-      <span style={{ width: 46, height: 46, borderRadius: 12, background: "var(--lii-true-teal)", color: "#fff", display: "grid", placeItems: "center", fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 20, letterSpacing: "-0.02em" }}>RJ</span>
-      <span style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 22, color: "var(--text-heading)", letterSpacing: "-0.01em" }}>RJ&nbsp;Insulation</span>
-    </span>
-  );
-}
 
 function ThankYouPage({ onNav }) {
   const Ic = LIcons;
   useReveal();
   const ctx = getLeadContext();
-
   // Fire the single generate_lead conversion once (data stashed on submit).
   React.useEffect(() => { fireLeadConversionOnce(); }, []);
-
   return (
     <div>
       {/* Confirmation banner */}
       <WavePanel color="dark-slate" radius="0" style={{ color: "#fff" }}>
-        <div className="wrap" style={{ padding: "72px 28px 76px", textAlign: "center", maxWidth: 800 }}>
+        <div className="wrap" style={{ padding: "72px 28px 76px", textAlign: "center", maxWidth: 820 }}>
           <div style={{ width: 84, height: 84, borderRadius: "50%", background: "rgba(198,226,153,0.16)", color: "var(--lii-grass-green)", display: "grid", placeItems: "center", margin: "0 auto 22px" }}>
             <Ic.CheckCircle size={48} />
           </div>
-          <div className="eyebrow-row" style={{ justifyContent: "center" }}><span className="lii-eyebrow" style={{ color: "var(--lii-grass-green)" }}>Enquiry received</span></div>
+          <div className="eyebrow-row" style={{ justifyContent: "center" }}><span className="lii-eyebrow" style={{ color: "var(--lii-grass-green)" }}>Loft insulation enquiry received</span></div>
           <h1 style={{ color: "#fff", fontSize: "clamp(34px,4.4vw,54px)", margin: "12px 0 16px", lineHeight: 1.06 }}>Thank you, your enquiry is in.</h1>
           <p style={{ color: "var(--text-on-dark-muted)", fontSize: 19, lineHeight: 1.6, margin: "0 auto", maxWidth: "34em" }}>
-            One of our accredited installation partners, <b style={{ color: "#fff" }}>RJ Insulation</b>, will call you shortly to arrange your free phone consultation.
+            Our accredited installation partner, <b style={{ color: "#fff" }}>RJ Insulation</b>, will call you shortly to talk through your home and arrange your free phone consultation. In the meantime, their brochure covers the four sustainable materials, the process and the guarantee.
           </p>
           {ctx && (
             <div style={{ display: "inline-flex", gap: 10, alignItems: "center", marginTop: 26, background: "rgba(255,255,255,0.08)", border: "1px solid var(--border-on-dark)", borderRadius: "var(--radius-pill)", padding: "10px 20px", fontSize: 14.5 }}>
@@ -65,66 +68,46 @@ function ThankYouPage({ onNav }) {
               <span>We've noted your estimated saving of around <b style={{ color: "#fff" }}>£{Math.round(ctx.yearly).toLocaleString("en-GB")}/year</b> for your consultation.</span>
             </div>
           )}
+          <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap", marginTop: 30 }}>
+            <Button variant="primary" size="lg" href={INS_BROCHURE_URL} rightIcon={<Ic.Arrow size={18} />}>Download brochure</Button>
+          </div>
         </div>
       </WavePanel>
 
-      {/* What happens next */}
+      {/* Updated process */}
       <section className="section">
-        <div className="wrap">
-          <SectionHead center eyebrow="What happens next" title="Three simple steps from here." marker
-            sub="No forms to chase, no pressure. Here's exactly what to expect." />
-          <div className="svc-grid svc-grid--3" style={{ alignItems: "stretch" }}>
-            {NEXT_STEPS.map(([icon, t, b], i) => {
-              const C = Ic[icon];
-              return (
-                <Card key={t} raised className="ben reveal" style={{ padding: 30 }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 16 }}>
-                    <div className="step__n" style={{ margin: 0 }}>{String(i + 1).padStart(2, "0")}</div>
-                    <div className="ben__ic" style={{ margin: 0 }}><C size={24} /></div>
+        <div className="wrap" style={{ maxWidth: 880 }}>
+          <SectionHead center eyebrow="What happens next" title="A simple, hassle-free process." marker
+            sub="From here to a fully-insulated loft: four clear steps, with reassurance the whole way." />
+          <div style={{ display: "grid", gap: 14 }}>
+            {INS_PROCESS.map(([t, b], i) => (
+              <Card key={t} raised className="reveal" style={{ padding: "22px 26px" }}>
+                <div style={{ display: "flex", gap: 18, alignItems: "flex-start" }}>
+                  <div className="step__n" style={{ margin: 0, flex: "none" }}>{String(i + 1).padStart(2, "0")}</div>
+                  <div>
+                    <h3 style={{ margin: "2px 0 6px", fontSize: 19 }}>{t}</h3>
+                    <p style={{ margin: 0, fontSize: 15, lineHeight: 1.6 }}>{b}</p>
                   </div>
-                  <h3 style={{ margin: "0 0 8px", fontSize: 20 }}>{t}</h3>
-                  <p style={{ margin: 0, fontSize: 14.5 }}>{b}</p>
-                </Card>
-              );
-            })}
+                </div>
+              </Card>
+            ))}
+          </div>
+          <div className="center" style={{ marginTop: 24 }}>
+            <span style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "var(--lii-neutral-50)", border: "1px solid var(--border-subtle)", borderRadius: "var(--radius-pill)", padding: "12px 22px", fontFamily: "var(--font-ui)", fontWeight: 700, fontSize: 14.5, color: "var(--lii-dark-slate)" }}>
+              <span style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--lii-warm-orange)", flex: "none" }}></span>
+              A standard loft is typically completed in 1–2 days: clean, fast and mess-free.
+            </span>
           </div>
         </div>
       </section>
 
-      {/* Introducing RJ Insulation */}
-      <section className="section section--mist" id="rj">
-        <div className="wrap split">
-          <div className="reveal">
-            <span className="lii-eyebrow">You're in expert hands</span>
-            <h2 style={{ fontSize: "clamp(28px,3.2vw,42px)", margin: "12px 0 18px" }}>Introducing <span className="lii-marker">RJ Insulation.</span></h2>
-            <div style={{ marginBottom: 18 }}><RJLogo /></div>
-            <p style={{ fontSize: 17, lineHeight: 1.7, margin: "0 0 16px" }}>RJ Insulation are one of the UK's most trusted eco-friendly loft insulation and storage specialists, known for sustainable materials, meticulous workmanship and a genuinely no-pressure approach.</p>
-            <p style={{ fontSize: 17, lineHeight: 1.7, margin: 0 }}>They're an accredited member of the installer network you've just been matched with, so you can expect impartial, expert advice tailored to your home.</p>
-          </div>
-          <Card raised style={{ padding: 32 }} className="reveal">
-            <h3 style={{ fontFamily: "var(--font-heading)", color: "var(--text-heading)", fontSize: 20, margin: "0 0 18px" }}>Why you'll be glad we matched you</h3>
-            <div style={{ display: "grid", gap: 14 }}>
-              {USPS.slice(0, 4).map(([icon, t, b]) => {
-                const C = Ic[icon];
-                return (
-                  <div key={t} style={{ display: "flex", gap: 14 }}>
-                    <span style={{ width: 40, height: 40, borderRadius: 11, background: "var(--lii-orange-100)", color: "var(--lii-warm-orange)", display: "grid", placeItems: "center", flex: "none" }}><C size={20} /></span>
-                    <div><b style={{ fontFamily: "var(--font-ui)", color: "var(--lii-dark-slate)", fontSize: 15, display: "block", marginBottom: 2 }}>{t}</b><span style={{ fontSize: 13.5, color: "var(--text-body)" }}>{b}</span></div>
-                  </div>
-                );
-              })}
-            </div>
-          </Card>
-        </div>
-      </section>
-
-      {/* Full USP grid */}
-      <section className="section">
+      {/* Sustainable insulation USPs */}
+      <section className="section section--mist">
         <div className="wrap">
-          <SectionHead center eyebrow="The RJ Insulation difference" title="Six reasons homeowners trust them."
-            sub="Genuine differentiators: the things their customers mention again and again." />
+          <SectionHead center eyebrow="The benefits" title="One of the smartest improvements you can make."
+            sub="Around 25% of your home's heat can escape through an uninsulated roof. Here's what a proper layer of sustainable insulation gives you back." />
           <div className="ben-grid">
-            {USPS.map(([icon, t, b]) => {
+            {INS_BENEFITS.map(([icon, t, b]) => {
               const C = Ic[icon];
               return (
                 <Card key={t} raised className="ben reveal">
@@ -135,6 +118,32 @@ function ThankYouPage({ onNav }) {
               );
             })}
           </div>
+          <p className="center" style={{ margin: "22px auto 0", fontSize: 13, color: "var(--text-muted)", maxWidth: "48em" }}>Saving of up to £315 a year is the estimate from Which? for a typical previously uninsulated home; actual savings vary by property.</p>
+        </div>
+      </section>
+
+      {/* Why RJ */}
+      <section className="section">
+        <div className="wrap">
+          <WavePanel color="true-teal" radius="var(--radius-xl)" style={{ padding: "clamp(36px,5vw,60px)", color: "#fff" }}>
+            <div className="eyebrow-row"><span className="lii-eyebrow" style={{ color: "var(--lii-grass-green)" }}>You're in expert hands</span></div>
+            <h2 style={{ color: "#fff", fontSize: "clamp(26px,3.2vw,40px)", margin: "12px 0 14px" }}>Why choose RJ Insulation?</h2>
+            <p style={{ color: "var(--text-on-dark-muted)", fontSize: 17, lineHeight: 1.7, margin: "0 0 26px", maxWidth: "44em" }}>
+              RJ Insulation are the UK's leading eco-friendly loft insulation experts: sheep wool, hemp, SupaSoft recycled plastic and SuperFOIL multifoil, fitted to the highest standard whether you're insulating from scratch or topping up old, tired insulation.
+            </p>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "12px 28px", marginBottom: 30 }}>
+              {INS_WHY_RJ.map((t) => (
+                <div key={t} style={{ display: "flex", alignItems: "center", gap: 12, fontFamily: "var(--font-ui)", fontWeight: 600, fontSize: 15.5 }}>
+                  <span style={{ width: 28, height: 28, borderRadius: "50%", background: "rgba(198,226,153,0.18)", color: "var(--lii-grass-green)", display: "grid", placeItems: "center", flex: "none" }}><Ic.Check size={16} /></span>
+                  {t}
+                </div>
+              ))}
+            </div>
+            <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
+              <Button variant="primary" size="lg" href={INS_BROCHURE_URL} rightIcon={<Ic.Arrow size={18} />}>Download brochure</Button>
+              <Button variant="outline" onDark size="lg" onClick={() => onNav("loft-insulation")}>Explore the materials</Button>
+            </div>
+          </WavePanel>
         </div>
       </section>
 
@@ -165,12 +174,12 @@ function ThankYouPage({ onNav }) {
       {/* Reassurance close */}
       <section className="section">
         <div className="wrap">
-          <WavePanel color="true-teal" radius="var(--radius-xl)" style={{ padding: "clamp(36px,5vw,64px)", textAlign: "center", color: "#fff" }}>
+          <WavePanel color="dark-slate" radius="var(--radius-xl)" style={{ padding: "clamp(36px,5vw,64px)", textAlign: "center", color: "#fff" }}>
             <h2 style={{ color: "#fff", fontSize: "clamp(26px,3.2vw,40px)", margin: "0 0 14px" }}>Keep an eye out for their call.</h2>
-            <p style={{ color: "var(--text-on-dark-muted)", fontSize: 18, margin: "0 auto 28px", maxWidth: "40em" }}>While you wait, see how much you could save by improving your loft insulation, or read up on the sustainable materials we fit.</p>
+            <p style={{ color: "var(--text-on-dark-muted)", fontSize: 18, margin: "0 auto 28px", maxWidth: "40em" }}>While you wait, the brochure covers the four sustainable materials, which suits your home's age, and the lifetime guarantee.</p>
             <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
-              <Button variant="primary" size="lg" onClick={() => onNav("home", "calculator")} rightIcon={<Ic.Arrow size={18} />}>See your savings</Button>
-              <Button variant="outline" onDark size="lg" onClick={() => onNav("home")}>Back to homepage</Button>
+              <Button variant="primary" size="lg" href={INS_BROCHURE_URL} rightIcon={<Ic.Arrow size={18} />}>Download brochure</Button>
+              <Button variant="outline" onDark size="lg" onClick={() => onNav("home", "calculator")}>See your savings</Button>
             </div>
           </WavePanel>
         </div>
@@ -179,4 +188,5 @@ function ThankYouPage({ onNav }) {
     </div>
   );
 }
+
 export { ThankYouPage };
